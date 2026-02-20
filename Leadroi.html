@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeadROI | Engineering Digital Legacies</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1A202C',
+                        secondary: '#2D3748',
+                        accent: '#B8860B',
+                        accentLight: '#D4AF37',
+                        highlight: '#20B2AA',
+                        offWhite: '#F5F5F5',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Montserrat', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #1A202C 0%, #2D3748 100%);
+        }
+        .text-gradient-gold {
+            background: linear-gradient(to right, #B8860B, #D4AF37);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #1A202C; }
+        ::-webkit-scrollbar-thumb { background: #B8860B; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-offWhite text-primary font-sans selection:bg-accent selection:text-white">
+
+    <!-- Header -->
+    <header class="fixed top-0 w-full z-50 bg-primary/90 backdrop-blur-md border-b border-white/5 py-4 px-6 md:px-12 flex justify-between items-center transition-all duration-300">
+        <div class="flex items-center space-x-2">
+            <span class="text-2xl font-display font-bold tracking-tighter text-white">Lead<span class="text-accent">ROI</span></span>
+        </div>
+        
+        <nav class="hidden md:flex space-x-8 text-sm uppercase tracking-widest text-white/70 font-medium">
+            <a href="#about" class="hover:text-accent transition-colors">About</a>
+            <a href="#services" class="hover:text-accent transition-colors">Services</a>
+            <a href="#process" class="hover:text-accent transition-colors">Process</a>
+            <a href="#testimonials" class="hover:text-accent transition-colors">Success</a>
+        </nav>
+
+        <a href="whatsapp://send?phone=8121197099" class="bg-accent hover:bg-accentLight text-white px-6 py-2.5 rounded-full font-display font-semibold text-sm transition-all transform hover:scale-105 active:scale-95 flex items-center gap-2 shadow-lg shadow-accent/20">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            WhatsApp Now
+        </a>
+    </header>
+
+    <!-- Floating WhatsApp for Mobile -->
+    <a href="whatsapp://send?phone=8121197099" class="md:hidden fixed bottom-6 right-6 z-[60] bg-accent p-4 rounded-full shadow-2xl animate-float">
+        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+    </a>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+        <!-- Abstract Background Elements -->
+        <div class="absolute inset-0 z-0">
+            <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-accent/10 rounded-full blur-[120px] animate-pulse"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-highlight/10 rounded-full blur-[120px]"></div>
+        </div>
+        
+        <div class="container mx-auto px-6 relative z-10 text-center max-w-5xl">
+            <h1 class="text-white text-4xl md:text-7xl font-display font-bold mb-6 tracking-tight leading-tight animate-fade-in-up">
+                Crafting Digital <span class="text-gradient-gold italic">Legacies</span> for India's Visionaries
+            </h1>
+            <p class="text-white/80 text-lg md:text-2xl font-serif max-w-3xl mx-auto mb-12 italic leading-relaxed opacity-0 animate-fade-in-up" style="animation-delay: 0.2s">
+                Beyond Websites. Beyond Marketing. We engineer an unparalleled digital presence that converts ambition into measurable triumph.
+            </p>
+            <div class="flex flex-col md:flex-row gap-6 justify-center items-center opacity-0 animate-fade-in-up" style="animation-delay: 0.4s">
+                <a href="whatsapp://send?phone=8121197099" class="bg-accent hover:bg-accentLight text-white px-10 py-5 rounded-full font-display font-bold text-lg transition-all transform hover:scale-105 shadow-2xl shadow-accent/40 group">
+                    Start Your Journey via WhatsApp
+                    <span class="inline-block ml-2 group-hover:translate-x-1 transition-transform">→</span>
+                </a>
+            </div>
+            <div class="mt-20 opacity-40 animate-bounce">
+                <a href="#about"><svg class="w-8 h-8 mx-auto text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- The LeadROI Advantage -->
+    <section id="about" class="py-24 md:py-32 bg-white">
+        <div class="container mx-auto px-6 max-w-7xl">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="reveal">
+                    <span class="text-accent uppercase tracking-[0.3em] font-display text-sm font-bold block mb-4">The Advantage</span>
+                    <h2 class="text-4xl md:text-5xl font-display font-bold mb-8 leading-tight">Where Vision Meets <span class="text-accent">Exponential</span> Growth</h2>
+                    <div class="space-y-6 text-secondary text-lg leading-relaxed">
+                        <p>In a crowded digital landscape, ordinary solutions yield ordinary results. LeadROI stands apart, curating bespoke strategies and crafting digital masterpieces designed for supreme impact.</p>
+                        <p>We don't just build; we architect your online dominance, ensuring every click translates to a valuable connection, every pixel resonates with your brand's prestige.</p>
+                        <p class="font-serif italic text-xl border-l-4 border-accent pl-6">Experience the power of precision-engineered digital transformation.</p>
+                    </div>
+                </div>
+                <div class="relative reveal" style="transition-delay: 0.2s">
+                    <div class="absolute -inset-4 bg-accent/5 rounded-2xl rotate-3"></div>
+                    <div class="relative bg-secondary rounded-2xl overflow-hidden aspect-square flex items-center justify-center p-12 group">
+                        <!-- Abstract Design Component -->
+                        <div class="grid grid-cols-2 gap-4 w-full h-full opacity-40 group-hover:opacity-60 transition-opacity">
+                            <div class="bg-accent h-32 rounded-lg"></div>
+                            <div class="bg-highlight h-48 rounded-lg mt-8"></div>
+                            <div class="bg-white/20 h-40 rounded-lg"></div>
+                            <div class="bg-accent h-32 rounded-lg -mt-12"></div>
+                        </div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <span class="text-white text-8xl font-display font-bold opacity-10">ROI</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="py-24 md:py-32 bg-primary text-white overflow-hidden">
+        <div class="container mx-auto px-6 max-w-7xl">
+            <div class="text-center mb-20 reveal">
+                <span class="text-accent uppercase tracking-[0.3em] font-display text-sm font-bold block mb-4">Our Expertise</span>
+                <h2 class="text-4xl md:text-6xl font-display font-bold mb-6">Mastery in Digital & Design</h2>
+                <p class="text-white/60 max-w-2xl mx-auto text-lg">A harmonious blend of cutting-edge digital marketing and unparalleled website craftsmanship, tailored exclusively for discerning brands.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Elite Marketing Card -->
+                <div class="glass-card p-10 md:p-14 rounded-3xl hover:bg-white/10 transition-all duration-500 reveal group">
+                    <div class="w-16 h-16 bg-accent/20 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+                        <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <h3 class="text-3xl font-display font-bold mb-6 text-accent">Elite Digital Marketing</h3>
+                    <ul class="space-y-4 text-lg text-white/70 mb-10">
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span> Strategic SEO & Organic Growth</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span> Performance Marketing</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span> Content & Brand Storytelling</li>
+                    </ul>
+                    <a href="whatsapp://send?phone=8121197099" class="inline-flex items-center text-accent font-bold tracking-widest uppercase text-sm group-hover:gap-4 gap-2 transition-all">
+                        WhatsApp for Details <span>→</span>
+                    </a>
+                </div>
+
+                <!-- Premium Architecture Card -->
+                <div class="glass-card p-10 md:p-14 rounded-3xl hover:bg-white/10 transition-all duration-500 reveal group" style="transition-delay: 0.2s">
+                    <div class="w-16 h-16 bg-highlight/20 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+                        <svg class="w-8 h-8 text-highlight" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                    </div>
+                    <h3 class="text-3xl font-display font-bold mb-6 text-highlight">Premium Website Architecture</h3>
+                    <ul class="space-y-4 text-lg text-white/70 mb-10">
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-highlight"></span> Bespoke Design & Development</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-highlight"></span> Immersive User Experience</li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-highlight"></span> Scalable Digital Foundations</li>
+                    </ul>
+                    <a href="whatsapp://send?phone=8121197099" class="inline-flex items-center text-highlight font-bold tracking-widest uppercase text-sm group-hover:gap-4 gap-2 transition-all">
+                        Call to Learn More <span>→</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Signature Process -->
+    <section id="process" class="py-24 md:py-32 bg-offWhite">
+        <div class="container mx-auto px-6 max-w-7xl">
+            <div class="text-center mb-20 reveal">
+                <span class="text-accent uppercase tracking-[0.3em] font-display text-sm font-bold block mb-4">Methodology</span>
+                <h2 class="text-4xl md:text-5xl font-display font-bold mb-6">Our Signature Process</h2>
+                <p class="text-secondary/70 max-w-2xl mx-auto text-lg">Precision, Transparency, Results. A meticulously orchestrated journey to excellence.</p>
+            </div>
+
+            <div class="relative">
+                <!-- Connector Line -->
+                <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-accent/20"></div>
+
+                <div class="space-y-24">
+                    <!-- Step 1 -->
+                    <div class="relative flex flex-col md:flex-row items-center reveal">
+                        <div class="md:w-1/2 md:pr-20 text-right order-2 md:order-1 mt-8 md:mt-0">
+                            <h3 class="text-2xl font-display font-bold mb-4">Discovery & Strategy</h3>
+                            <p class="text-secondary/70 text-lg">Deep dive into your brand, market, and aspirations to build a solid foundation.</p>
+                        </div>
+                        <div class="w-14 h-14 bg-white border-2 border-accent rounded-full flex items-center justify-center z-10 font-display font-bold text-accent order-1 md:order-2 shadow-xl">01</div>
+                        <div class="md:w-1/2 md:pl-20 order-3"></div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="relative flex flex-col md:flex-row items-center reveal">
+                        <div class="md:w-1/2 md:pr-20 order-1"></div>
+                        <div class="w-14 h-14 bg-white border-2 border-accent rounded-full flex items-center justify-center z-10 font-display font-bold text-accent order-1 md:order-2 shadow-xl">02</div>
+                        <div class="md:w-1/2 md:pl-20 mt-8 md:mt-0 order-3">
+                            <h3 class="text-2xl font-display font-bold mb-4">Architect & Design</h3>
+                            <p class="text-secondary/70 text-lg">Crafting compelling narratives and visually stunning interfaces that captivate.</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="relative flex flex-col md:flex-row items-center reveal">
+                        <div class="md:w-1/2 md:pr-20 text-right order-2 md:order-1 mt-8 md:mt-0">
+                            <h3 class="text-2xl font-display font-bold mb-4">Develop & Implement</h3>
+                            <p class="text-secondary/70 text-lg">Bringing strategy to life with cutting-edge technology and precision coding.</p>
+                        </div>
+                        <div class="w-14 h-14 bg-white border-2 border-accent rounded-full flex items-center justify-center z-10 font-display font-bold text-accent order-1 md:order-2 shadow-xl">03</div>
+                        <div class="md:w-1/2 md:pl-20 order-3"></div>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="relative flex flex-col md:flex-row items-center reveal">
+                        <div class="md:w-1/2 md:pr-20 order-1"></div>
+                        <div class="w-14 h-14 bg-white border-2 border-accent rounded-full flex items-center justify-center z-10 font-display font-bold text-accent order-1 md:order-2 shadow-xl">04</div>
+                        <div class="md:w-1/2 md:pl-20 mt-8 md:mt-0 order-3">
+                            <h3 class="text-2xl font-display font-bold mb-4">Optimize & Elevate</h3>
+                            <p class="text-secondary/70 text-lg">Continuous analysis and refinement for sustained, long-term digital growth.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Stories -->
+    <section id="testimonials" class="py-24 md:py-32 bg-secondary text-white">
+        <div class="container mx-auto px-6 max-w-7xl">
+            <div class="text-center mb-20 reveal">
+                <span class="text-accent uppercase tracking-[0.3em] font-display text-sm font-bold block mb-4">Client Success</span>
+                <h2 class="text-4xl md:text-5xl font-display font-bold mb-6">Transforming Ambition into Achievement</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 reveal">
+                <div class="bg-primary p-10 rounded-3xl border border-white/5 flex flex-col justify-between">
+                    <div>
+                        <div class="text-accent mb-6">
+                            <svg class="w-10 h-10 opacity-50" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C19.5693 16 20.017 15.5523 20.017 15V9C20.017 8.44772 19.5693 8 19.017 8H16.017C15.4647 8 15.017 8.44772 15.017 9V12C15.017 12.5523 14.5693 13 14.017 13H11.017V21H14.017ZM5.017 21L5.017 18C5.017 16.8954 5.91243 16 7.017 16H10.017C10.5693 16 11.017 15.5523 11.017 15V9C11.017 8.44772 10.5693 8 10.017 8H7.017C6.46472 8 6.017 8.44772 6.017 9V12C6.017 12.5523 5.5693 13 5.017 13H2.017V21H5.017Z"/></svg>
+                        </div>
+                        <p class="text-xl font-serif italic mb-8 leading-relaxed">"LeadROI revitalized our online presence, increasing inbound leads by 180% within six months. Their premium website design is a true masterpiece."</p>
+                    </div>
+                    <div>
+                        <hr class="border-white/10 mb-6">
+                        <p class="font-bold">CEO</p>
+                        <p class="text-white/50 text-sm">Leading Real Estate Developer</p>
+                    </div>
+                </div>
+
+                <div class="bg-primary p-10 rounded-3xl border border-white/5 flex flex-col justify-between md:translate-y-8">
+                    <div>
+                        <div class="text-accent mb-6">
+                            <svg class="w-10 h-10 opacity-50" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C19.5693 16 20.017 15.5523 20.017 15V9C20.017 8.44772 19.5693 8 19.017 8H16.017C15.4647 8 15.017 8.44772 15.017 9V12C15.017 12.5523 14.5693 13 14.017 13H11.017V21H14.017ZM5.017 21L5.017 18C5.017 16.8954 5.91243 16 7.017 16H10.017C10.5693 16 11.017 15.5523 11.017 15V9C11.017 8.44772 10.5693 8 10.017 8H7.017C6.46472 8 6.017 8.44772 6.017 9V12C6.017 12.5523 5.5693 13 5.017 13H2.017V21H5.017Z"/></svg>
+                        </div>
+                        <p class="text-xl font-serif italic mb-8 leading-relaxed">"The strategic digital marketing campaigns from LeadROI transformed our market reach. We saw a 3x improvement in conversion rates."</p>
+                    </div>
+                    <div>
+                        <hr class="border-white/10 mb-6">
+                        <p class="font-bold">Founder</p>
+                        <p class="text-white/50 text-sm">Innovative SaaS Company</p>
+                    </div>
+                </div>
+
+                <div class="bg-primary p-10 rounded-3xl border border-white/5 flex flex-col justify-between">
+                    <div>
+                        <div class="text-accent mb-6">
+                            <svg class="w-10 h-10 opacity-50" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C19.5693 16 20.017 15.5523 20.017 15V9C20.017 8.44772 19.5693 8 19.017 8H16.017C15.4647 8 15.017 8.44772 15.017 9V12C15.017 12.5523 14.5693 13 14.017 13H11.017V21H14.017ZM5.017 21L5.017 18C5.017 16.8954 5.91243 16 7.017 16H10.017C10.5693 16 11.017 15.5523 11.017 15V9C11.017 8.44772 10.5693 8 10.017 8H7.017C6.46472 8 6.017 8.44772 6.017 9V12C6.017 12.5523 5.5693 13 5.017 13H2.017V21H5.017Z"/></svg>
+                        </div>
+                        <p class="text-xl font-serif italic mb-8 leading-relaxed">"From concept to launch, LeadROI’s attention to detail and commitment to excellence were unparalleled. Our new platform consistently outperforms expectations."</p>
+                    </div>
+                    <div>
+                        <hr class="border-white/10 mb-6">
+                        <p class="font-bold">Marketing Director</p>
+                        <p class="text-white/50 text-sm">Prominent E-commerce Enterprise</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Us -->
+    <section class="py-24 md:py-32 bg-white">
+        <div class="container mx-auto px-6 max-w-7xl">
+            <div class="flex flex-col md:flex-row gap-16">
+                <div class="md:w-1/3 reveal">
+                    <h2 class="text-4xl font-display font-bold mb-6">The LeadROI Difference</h2>
+                    <p class="text-secondary/70 text-lg mb-8">Choosing LeadROI means partnering with a team dedicated to your exclusive digital triumph.</p>
+                    <a href="whatsapp://send?phone=8121197099" class="text-accent font-bold underline decoration-2 underline-offset-8 hover:text-primary transition-colors">Start Your Transformation</a>
+                </div>
+                <div class="md:w-2/3 grid sm:grid-cols-2 gap-10 reveal" style="transition-delay: 0.2s">
+                    <div>
+                        <h4 class="font-display font-bold text-xl mb-3 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-accent"></span> Bespoke Strategies</h4>
+                        <p class="text-secondary/70">No cookie-cutter solutions. Every plan is handcrafted for your unique vision.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-display font-bold text-xl mb-3 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-accent"></span> Unrivaled Expertise</h4>
+                        <p class="text-secondary/70">Seasoned digital architects and design visionaries at your service.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-display font-bold text-xl mb-3 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-accent"></span> ROI-Driven Focus</h4>
+                        <p class="text-secondary/70">Measurable success and sustained growth through data-backed decisions.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-display font-bold text-xl mb-3 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-accent"></span> Transparent Partnership</h4>
+                        <p class="text-secondary/70">Clear communication and a collaborative approach every step of the way.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-24 md:py-32 bg-offWhite">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl font-display font-bold mb-4">Insights & FAQs</h2>
+                <p class="text-secondary/70">Clarity in Your Digital Journey</p>
+            </div>
+
+            <div class="space-y-4 reveal">
+                <div class="bg-white rounded-2xl border border-gray-100 overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full text-left p-6 md:p-8 flex justify-between items-center group">
+                        <span class="text-lg font-bold">What makes LeadROI's websites 'premium'?</span>
+                        <span class="text-accent group-hover:rotate-45 transition-transform text-2xl">+</span>
+                    </button>
+                    <div class="hidden px-8 pb-8 text-secondary/70 leading-relaxed border-t border-gray-50 pt-4">
+                        Bespoke digital assets engineered for performance, aesthetics, and conversion, featuring custom design, advanced SEO, immersive UX, and cutting-edge technology.
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl border border-gray-100 overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full text-left p-6 md:p-8 flex justify-between items-center group">
+                        <span class="text-lg font-bold">How do you ensure ROI for marketing efforts?</span>
+                        <span class="text-accent group-hover:rotate-45 transition-transform text-2xl">+</span>
+                    </button>
+                    <div class="hidden px-8 pb-8 text-secondary/70 leading-relaxed border-t border-gray-50 pt-4">
+                        Data-driven, performance-focused strategies with clear KPIs, continuous analysis, A/B testing, and optimization at every funnel stage.
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl border border-gray-100 overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full text-left p-6 md:p-8 flex justify-between items-center group">
+                        <span class="text-lg font-bold">Can LeadROI serve businesses outside Hyderabad?</span>
+                        <span class="text-accent group-hover:rotate-45 transition-transform text-2xl">+</span>
+                    </button>
+                    <div class="hidden px-8 pb-8 text-secondary/70 leading-relaxed border-t border-gray-50 pt-4">
+                        Absolutely. While our base is in Hyderabad, our services extend seamlessly to premium businesses across all of India and globally.
+                    </div>
+                </div>
+            </div>
+            
+            <p class="text-center mt-12 text-secondary/60 font-serif italic">Have more questions? We welcome a personal conversation.</p>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="py-24 md:py-32 relative overflow-hidden">
+        <div class="absolute inset-0 bg-primary z-0">
+            <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-accent/40 via-transparent to-transparent"></div>
+        </div>
+        <div class="container mx-auto px-6 relative z-10 text-center max-w-4xl reveal">
+            <h2 class="text-white text-4xl md:text-6xl font-display font-bold mb-8 leading-tight">Ready to Redefine Your Digital Horizon?</h2>
+            <p class="text-white/70 text-xl mb-12 font-serif italic">Partner with LeadROI and unlock the true potential of your brand online. Your next chapter of digital excellence awaits.</p>
+            
+            <div class="flex flex-col items-center">
+                <a href="whatsapp://send?phone=8121197099" class="bg-accent hover:bg-accentLight text-white px-12 py-6 rounded-full font-display font-bold text-xl transition-all transform hover:scale-105 shadow-[0_0_50px_rgba(184,134,11,0.3)] group mb-4">
+                    WhatsApp Us Now
+                </a>
+                <p class="text-white/40 text-sm uppercase tracking-widest mt-6">Confidential Consultations Only</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Strategic Footer -->
+    <footer class="bg-primary py-12 px-6 border-t border-white/5">
+        <div class="container mx-auto max-w-7xl flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="text-center md:text-left">
+                <div class="text-xl font-display font-bold text-white mb-2">Lead<span class="text-accent">ROI</span></div>
+                <p class="text-white/40 text-sm uppercase tracking-widest">Engineering Digital Legacies</p>
+            </div>
+            <div class="text-center md:text-right">
+                <p class="text-white/60 text-sm mb-2">Hyderabad, India | Servicing Pan-India</p>
+                <div class="flex gap-4 text-white/30 text-xs justify-center md:justify-end">
+                    <a href="#" class="hover:text-accent transition-colors">Privacy Policy</a>
+                    <span>|</span>
+                    <a href="#" class="hover:text-accent transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Toggle Logic
+        function toggleFaq(button) {
+            const content = button.nextElementSibling;
+            const plus = button.querySelector('span:last-child');
+            
+            if(content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                plus.textContent = '−';
+                plus.classList.add('rotate-180');
+            } else {
+                content.classList.add('hidden');
+                plus.textContent = '+';
+                plus.classList.remove('rotate-180');
+            }
+        }
+
+        // Reveal Animations on Scroll
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+
+        window.addEventListener("scroll", reveal);
+        // Initial check
+        reveal();
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('py-2', 'bg-primary');
+                header.classList.remove('py-4', 'bg-primary/90');
+            } else {
+                header.classList.add('py-4', 'bg-primary/90');
+                header.classList.remove('py-2', 'bg-primary');
+            }
+        });
+    </script>
+</body>
+</html>
