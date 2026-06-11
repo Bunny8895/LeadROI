@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crush Message AI — Turn Dry Texts Into Crush-Worthy Messages</title>
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --bg2: #12121a;
+    --bg3: #1a1a26;
+    --card: #16161f;
+    --card2: #1e1e2e;
+    --border: rgba(255,255,255,0.07);
+    --border2: rgba(255,255,255,0.13);
+    --text: #f0f0f8;
+    --muted: #8888aa;
+    --accent: #c084fc;
+    --accent2: #f472b6;
+    --accent3: #fb923c;
+    --grad: linear-gradient(135deg, #c084fc, #f472b6, #fb923c);
+    --grad2: linear-gradient(135deg, rgba(192,132,252,0.15), rgba(244,114,182,0.08));
+    --success: #34d399;
+    --radius: 14px;
+    --radius2: 20px;
+  }
+  .light {
+    --bg: #f8f7ff;
+    --bg2: #f0eeff;
+    --bg3: #e8e5ff;
+    --card: #ffffff;
+    --card2: #f5f3ff;
+    --border: rgba(0,0,0,0.07);
+    --border2: rgba(0,0,0,0.13);
+    --text: #1a1a2e;
+    --muted: #6b7280;
+    --grad2: linear-gradient(135deg, rgba(192,132,252,0.08), rgba(244,114,182,0.04));
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    transition: background 0.3s, color 0.3s;
+  }
+  /* BG orbs */
+  .orb-wrap { position: fixed; inset: 0; pointer-events: none; overflow: hidden; z-index: 0; }
+  .orb { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.18; }
+  .orb1 { width: 500px; height: 500px; background: #c084fc; top: -100px; left: -100px; animation: drift 12s ease-in-out infinite alternate; }
+  .orb2 { width: 400px; height: 400px; background: #f472b6; bottom: -80px; right: -80px; animation: drift 10s ease-in-out infinite alternate-reverse; }
+  .orb3 { width: 300px; height: 300px; background: #fb923c; top: 50%; left: 60%; animation: drift 14s ease-in-out infinite alternate; }
+  @keyframes drift { from { transform: translate(0,0) scale(1); } to { transform: translate(30px,20px) scale(1.1); } }
+
+  .wrap { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; padding: 0 16px 80px; }
+
+  /* NAV */
+  nav { display: flex; align-items: center; justify-content: space-between; padding: 20px 0; }
+  .logo { font-size: 18px; font-weight: 700; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .theme-btn { background: var(--card); border: 1px solid var(--border2); color: var(--text); width: 38px; height: 38px; border-radius: 50%; cursor: pointer; font-size: 16px; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
+  .theme-btn:hover { background: var(--card2); transform: scale(1.05); }
+
+  /* HERO */
+  .hero { text-align: center; padding: 48px 0 40px; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--card); border: 1px solid var(--border2); border-radius: 999px; padding: 6px 16px; font-size: 12px; color: var(--muted); margin-bottom: 24px; }
+  .hero-badge span { width: 6px; height: 6px; background: var(--success); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.4; } }
+  h1 { font-size: clamp(28px, 6vw, 46px); font-weight: 800; line-height: 1.1; letter-spacing: -1px; margin-bottom: 16px; }
+  h1 em { font-style: normal; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .hero p { color: var(--muted); font-size: clamp(14px, 2.5vw, 17px); max-width: 480px; margin: 0 auto; line-height: 1.6; }
+
+  /* CARD */
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius2); padding: 24px; margin-bottom: 16px; transition: border-color 0.2s; }
+  .card:hover { border-color: var(--border2); }
+
+  label { font-size: 13px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.6px; display: block; margin-bottom: 8px; }
+  textarea, input[type=text] {
+    width: 100%; background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 16px; color: var(--text); font-size: 15px; font-family: inherit; resize: vertical; transition: border-color 0.2s, box-shadow 0.2s; outline: none;
+  }
+  textarea { min-height: 110px; }
+  textarea:focus, input[type=text]:focus { border-color: rgba(192,132,252,0.5); box-shadow: 0 0 0 3px rgba(192,132,252,0.1); }
+  textarea::placeholder, input::placeholder { color: var(--muted); opacity: 0.7; }
+
+  .char-count { text-align: right; font-size: 12px; color: var(--muted); margin-top: 6px; }
+  .char-count.warn { color: var(--accent3); }
+
+  /* VIBES */
+  .vibes { display: flex; flex-wrap: wrap; gap: 8px; }
+  .vibe-btn { background: var(--bg2); border: 1px solid var(--border); border-radius: 999px; padding: 8px 16px; font-size: 13px; font-weight: 500; color: var(--muted); cursor: pointer; transition: all 0.2s; white-space: nowrap; }
+  .vibe-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .vibe-btn.active { background: linear-gradient(135deg, rgba(192,132,252,0.2), rgba(244,114,182,0.2)); border-color: var(--accent); color: var(--text); }
+
+  /* SLIDER */
+  .slider-wrap { padding: 4px 0; }
+  .slider-labels { display: flex; justify-content: space-between; font-size: 11px; color: var(--muted); margin-top: 6px; }
+  input[type=range] { width: 100%; -webkit-appearance: none; appearance: none; height: 4px; border-radius: 4px; background: linear-gradient(to right, var(--accent) 0%, var(--accent) 50%, var(--border2) 50%, var(--border2) 100%); outline: none; cursor: pointer; }
+  input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 20px; height: 20px; border-radius: 50%; background: var(--grad); box-shadow: 0 0 10px rgba(192,132,252,0.5); cursor: pointer; transition: transform 0.15s; }
+  input[type=range]::-webkit-slider-thumb:hover { transform: scale(1.15); }
+  .intensity-val { display: inline-flex; align-items: center; justify-content: center; background: var(--grad); color: #fff; border-radius: 999px; padding: 2px 12px; font-size: 13px; font-weight: 700; margin-left: 10px; }
+
+  /* GENERATE BTN */
+  .gen-btn { width: 100%; padding: 16px; border-radius: var(--radius); border: none; background: var(--grad); color: #fff; font-size: 16px; font-weight: 700; cursor: pointer; letter-spacing: 0.3px; transition: all 0.2s; position: relative; overflow: hidden; }
+  .gen-btn::after { content: ''; position: absolute; inset: 0; background: rgba(255,255,255,0); transition: background 0.2s; }
+  .gen-btn:hover::after { background: rgba(255,255,255,0.1); }
+  .gen-btn:active { transform: scale(0.98); }
+  .gen-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+  /* LOADER */
+  .loader { display: none; text-align: center; padding: 48px 24px; }
+  .loader.show { display: block; }
+  .spinner { width: 40px; height: 40px; border: 3px solid var(--border2); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 16px; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .loader p { color: var(--muted); font-size: 14px; }
+  .loading-dots::after { content: ''; animation: dots 1.5s infinite; }
+  @keyframes dots { 0%{content:'.'} 33%{content:'..'} 66%{content:'...'} 100%{content:'.'} }
+
+  /* RESULTS */
+  #results { display: none; }
+  #results.show { display: block; }
+  .results-header { font-size: 13px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 12px; }
+
+  .result-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius2); padding: 20px; margin-bottom: 12px; animation: slideUp 0.4s ease; transition: border-color 0.2s; }
+  .result-card:hover { border-color: var(--border2); }
+  @keyframes slideUp { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
+  .result-card:nth-child(1) { animation-delay: 0.05s; }
+  .result-card:nth-child(2) { animation-delay: 0.15s; }
+  .result-card:nth-child(3) { animation-delay: 0.25s; }
+
+  .rc-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+  .rc-title { font-size: 13px; font-weight: 700; }
+  .rc-title.best { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .rc-actions { display: flex; gap: 6px; }
+  .rc-btn { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 5px 10px; font-size: 12px; color: var(--muted); cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 4px; white-space: nowrap; }
+  .rc-btn:hover { border-color: var(--border2); color: var(--text); background: var(--card2); }
+  .rc-btn.fav.active { border-color: var(--accent2); color: var(--accent2); }
+
+  .rc-text { font-size: 15px; line-height: 1.7; color: var(--text); }
+
+  /* TOAST */
+  #toast { position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%) translateY(100px); background: var(--card2); border: 1px solid var(--border2); border-radius: 999px; padding: 10px 20px; font-size: 14px; font-weight: 500; color: var(--text); z-index: 999; transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1); white-space: nowrap; backdrop-filter: blur(10px); }
+  #toast.show { transform: translateX(-50%) translateY(0); }
+
+  /* HISTORY */
+  #history-section { display: none; }
+  #history-section.show { display: block; }
+  .history-toggle { width: 100%; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 12px 16px; color: var(--muted); font-size: 14px; font-weight: 500; cursor: pointer; text-align: left; display: flex; align-items: center; justify-content: space-between; transition: all 0.2s; margin-bottom: 12px; }
+  .history-toggle:hover { border-color: var(--border2); color: var(--text); }
+  .hist-item { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 16px; margin-bottom: 8px; cursor: pointer; transition: all 0.2s; }
+  .hist-item:hover { border-color: var(--border2); background: var(--card2); }
+  .hist-meta { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+  .hist-vibe { font-size: 11px; background: var(--bg2); border: 1px solid var(--border); border-radius: 999px; padding: 2px 10px; color: var(--muted); }
+  .hist-time { font-size: 11px; color: var(--muted); margin-left: auto; }
+  .hist-preview { font-size: 13px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .hist-del { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 14px; padding: 2px 6px; border-radius: 4px; transition: color 0.2s; }
+  .hist-del:hover { color: #f87171; }
+
+  /* FAVS */
+  .fav-section { margin-top: 8px; }
+  .fav-item { background: linear-gradient(135deg, rgba(192,132,252,0.06), rgba(244,114,182,0.04)); border: 1px solid rgba(192,132,252,0.2); border-radius: var(--radius); padding: 12px 14px; margin-bottom: 8px; display: flex; align-items: flex-start; gap: 10px; }
+  .fav-text { font-size: 13px; line-height: 1.6; flex: 1; }
+  .fav-actions { display: flex; gap: 4px; flex-shrink: 0; }
+
+  /* DIVIDER */
+  .section-divider { display: flex; align-items: center; gap: 12px; margin: 28px 0 20px; }
+  .section-divider::before, .section-divider::after { content:''; flex:1; height:1px; background: var(--border); }
+  .section-divider span { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.6px; white-space: nowrap; }
+
+  /* TIPS */
+  .tip-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin-top: 4px; }
+  .tip { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px; }
+  .tip-icon { font-size: 20px; margin-bottom: 6px; }
+  .tip h3 { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+  .tip p { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+  /* EMPTY */
+  .empty { text-align: center; padding: 32px 16px; color: var(--muted); font-size: 14px; }
+
+  @media (max-width: 480px) {
+    .rc-actions { flex-wrap: wrap; }
+    h1 { font-size: 26px; }
+    .hero { padding: 32px 0 28px; }
+    .card { padding: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="orb-wrap">
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+</div>
+
+<div id="toast">✅ Copied to clipboard!</div>
+
+<div class="wrap">
+  <nav>
+    <div class="logo">💬 CrushMsg AI</div>
+    <button class="theme-btn" id="themeBtn" title="Toggle theme">🌙</button>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-badge"><span></span> AI-Powered Text Glow-Up</div>
+    <h1>Turn Dry Texts Into<br><em>Crush-Worthy</em> Messages 😏</h1>
+    <p>Paste your message and get funnier, flirtier, and more engaging versions instantly.</p>
+  </div>
+
+  <!-- INPUT CARD -->
+  <div class="card">
+    <label>Your Message</label>
+    <textarea id="msgInput" placeholder="Type the message you want to send..." maxlength="500"></textarea>
+    <div class="char-count" id="charCount">0 / 500</div>
+  </div>
+
+  <div class="card">
+    <label>Situation / Context</label>
+    <input type="text" id="ctxInput" placeholder="First chat, talking stage, close friends, after a fight..." maxlength="200">
+  </div>
+
+  <div class="card">
+    <label>Choose Your Vibe</label>
+    <div class="vibes" id="vibes">
+      <button class="vibe-btn active" data-vibe="Funny">😂 Funny</button>
+      <button class="vibe-btn" data-vibe="Flirty">😏 Flirty</button>
+      <button class="vibe-btn" data-vibe="Cute">🥰 Cute</button>
+      <button class="vibe-btn" data-vibe="Romantic">❤️ Romantic</button>
+      <button class="vibe-btn" data-vibe="Emotional">💌 Emotional</button>
+      <button class="vibe-btn" data-vibe="Confident">😎 Confident</button>
+      <button class="vibe-btn" data-vibe="Casual">✨ Casual</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <label>Flirting Intensity <span class="intensity-val" id="intVal">5</span></label>
+    <div class="slider-wrap">
+      <input type="range" id="intensity" min="1" max="10" value="5" step="1">
+      <div class="slider-labels"><span>😇 Tame</span><span>🔥 Spicy</span></div>
+    </div>
+  </div>
+
+  <button class="gen-btn" id="genBtn">Make It Better 🚀</button>
+
+  <!-- LOADER -->
+  <div class="loader" id="loader">
+    <div class="spinner"></div>
+    <p>Cooking the perfect text<span class="loading-dots"></span></p>
+  </div>
+
+  <!-- RESULTS -->
+  <div id="results">
+    <div class="section-divider"><span>Your glow-up messages</span></div>
+    <div class="results-header">3 AI-Generated Versions</div>
+    <div id="result-cards"></div>
+  </div>
+
+  <!-- TIPS -->
+  <div class="section-divider"><span>Pro tips</span></div>
+  <div class="tip-grid">
+    <div class="tip"><div class="tip-icon">🎯</div><h3>Be specific</h3><p>Add context about your situation for more personalized results.</p></div>
+    <div class="tip"><div class="tip-icon">🔄</div><h3>Mix vibes</h3><p>Try different vibes to find the tone that fits the moment.</p></div>
+    <div class="tip"><div class="tip-icon">⚡</div><h3>Use intensity</h3><p>Keep it low for casual chats, crank it up for flirty moments.</p></div>
+  </div>
+
+  <!-- HISTORY -->
+  <div id="history-section">
+    <div class="section-divider"><span>History & Favorites</span></div>
+
+    <!-- FAVORITES -->
+    <div class="fav-section" id="favSection">
+      <div class="results-header">⭐ Saved Favorites</div>
+      <div id="favList"><div class="empty">No favorites yet. Hit ⭐ on any message to save it.</div></div>
+    </div>
+
+    <div style="margin: 20px 0 10px;">
+      <button class="history-toggle" id="histToggle">
+        <span>🕘 Recent Generations</span>
+        <span id="histArrow">▾</span>
+      </button>
+      <div id="histList" style="display:none;"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const SYSTEM_PROMPT = `You are an expert dating and texting assistant. Rewrite messages to sound more natural, engaging, funny, flirty, emotionally attractive, and conversational. Preserve the user's intent. Avoid cringe, manipulation, harassment, or overly aggressive flirting. Match the selected vibe and intensity level.
+
+You must respond with ONLY a valid JSON object in this exact format (no markdown, no explanation, just the JSON):
+{
+  "best": "the best version of the message",
+  "alt1": "an alternative version with a slightly different angle",
+  "alt2": "another alternative version with a different tone"
+}`;
+
+let selectedVibe = 'Funny';
+let history = JSON.parse(localStorage.getItem('crush_history') || '[]');
+let favorites = JSON.parse(localStorage.getItem('crush_favs') || '[]');
+let histOpen = false;
+let isDark = localStorage.getItem('crush_theme') !== 'light';
+
+// THEME
+function applyTheme() {
+  document.body.classList.toggle('light', !isDark);
+  document.getElementById('themeBtn').textContent = isDark ? '🌙' : '☀️';
+}
+applyTheme();
+document.getElementById('themeBtn').addEventListener('click', () => {
+  isDark = !isDark;
+  localStorage.setItem('crush_theme', isDark ? 'dark' : 'light');
+  applyTheme();
+});
+
+// CHAR COUNTER
+const msgInput = document.getElementById('msgInput');
+const charCount = document.getElementById('charCount');
+msgInput.addEventListener('input', () => {
+  const l = msgInput.value.length;
+  charCount.textContent = `${l} / 500`;
+  charCount.classList.toggle('warn', l > 400);
+});
+
+// VIBE SELECTOR
+document.getElementById('vibes').addEventListener('click', e => {
+  const btn = e.target.closest('.vibe-btn');
+  if (!btn) return;
+  document.querySelectorAll('.vibe-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  selectedVibe = btn.dataset.vibe;
+});
+
+// INTENSITY SLIDER
+const slider = document.getElementById('intensity');
+const intVal = document.getElementById('intVal');
+slider.addEventListener('input', () => {
+  const v = slider.value;
+  intVal.textContent = v;
+  const pct = ((v - 1) / 9) * 100;
+  slider.style.background = `linear-gradient(to right, var(--accent) 0%, var(--accent) ${pct}%, var(--border2) ${pct}%, var(--border2) 100%)`;
+});
+
+// TOAST
+function showToast(msg = '✅ Copied!') {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+// COPY
+function copyText(text) {
+  navigator.clipboard.writeText(text).then(() => showToast('✅ Copied to clipboard!'));
+}
+
+// SHARE
+function shareText(text) {
+  if (navigator.share) {
+    navigator.share({ text }).catch(() => {});
+  } else {
+    copyText(text);
+    showToast('📋 Copied (no share API on this device)');
+  }
+}
+
+// SAVE / REMOVE FAV
+function toggleFav(text, btn) {
+  const idx = favorites.indexOf(text);
+  if (idx === -1) {
+    favorites.unshift(text);
+    showToast('⭐ Saved to favorites!');
+  } else {
+    favorites.splice(idx, 1);
+    showToast('🗑️ Removed from favorites');
+  }
+  localStorage.setItem('crush_favs', JSON.stringify(favorites));
+  renderFavs();
+  // Update all fav buttons for this text
+  document.querySelectorAll('.rc-btn.fav').forEach(b => {
+    if (b.dataset.text === text) b.classList.toggle('active', favorites.includes(text));
+  });
+}
+
+function renderFavs() {
+  const list = document.getElementById('favList');
+  if (!favorites.length) {
+    list.innerHTML = '<div class="empty">No favorites yet. Hit ⭐ on any message to save it.</div>';
+    return;
+  }
+  list.innerHTML = favorites.map((f, i) => `
+    <div class="fav-item">
+      <div class="fav-text">${escHtml(f)}</div>
+      <div class="fav-actions">
+        <button class="rc-btn" onclick="copyText(${JSON.stringify(f)});showToast('✅ Copied!')">📋</button>
+        <button class="rc-btn" onclick="favorites.splice(${i},1);localStorage.setItem('crush_favs',JSON.stringify(favorites));renderFavs();showToast('🗑️ Removed')">✕</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+// HISTORY
+function saveToHistory(msg, ctx, vibe, intensity, results) {
+  history.unshift({ msg, ctx, vibe, intensity, results, time: Date.now() });
+  if (history.length > 20) history.pop();
+  localStorage.setItem('crush_history', JSON.stringify(history));
+  renderHistory();
+}
+
+function timeAgo(ts) {
+  const diff = Date.now() - ts;
+  const m = Math.floor(diff / 60000);
+  if (m < 1) return 'just now';
+  if (m < 60) return `${m}m ago`;
+  const h = Math.floor(m / 60);
+  if (h < 24) return `${h}h ago`;
+  return `${Math.floor(h/24)}d ago`;
+}
+
+function renderHistory() {
+  const list = document.getElementById('histList');
+  if (!history.length) {
+    list.innerHTML = '<div class="empty">No history yet.</div>';
+    return;
+  }
+  list.innerHTML = history.map((h, i) => `
+    <div class="hist-item" onclick="loadHistory(${i})">
+      <div class="hist-meta">
+        <span class="hist-vibe">${h.vibe} · ${h.intensity}/10</span>
+        <span class="hist-time">${timeAgo(h.time)}</span>
+        <button class="hist-del" onclick="event.stopPropagation();deleteHistory(${i})">✕</button>
+      </div>
+      <div class="hist-preview">${escHtml(h.msg)}</div>
+    </div>
+  `).join('');
+}
+
+function loadHistory(i) {
+  const h = history[i];
+  document.getElementById('msgInput').value = h.msg;
+  charCount.textContent = `${h.msg.length} / 500`;
+  document.getElementById('ctxInput').value = h.ctx || '';
+  selectedVibe = h.vibe;
+  document.querySelectorAll('.vibe-btn').forEach(b => b.classList.toggle('active', b.dataset.vibe === h.vibe));
+  slider.value = h.intensity;
+  intVal.textContent = h.intensity;
+  const pct = ((h.intensity - 1) / 9) * 100;
+  slider.style.background = `linear-gradient(to right, var(--accent) 0%, var(--accent) ${pct}%, var(--border2) ${pct}%, var(--border2) 100%)`;
+  renderResults(h.results);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function deleteHistory(i) {
+  history.splice(i, 1);
+  localStorage.setItem('crush_history', JSON.stringify(history));
+  renderHistory();
+}
+
+document.getElementById('histToggle').addEventListener('click', () => {
+  histOpen = !histOpen;
+  document.getElementById('histList').style.display = histOpen ? 'block' : 'none';
+  document.getElementById('histArrow').textContent = histOpen ? '▴' : '▾';
+  if (histOpen) renderHistory();
+});
+
+// ESCAPE HTML
+function escHtml(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// RENDER RESULTS
+function renderResults(data) {
+  const container = document.getElementById('result-cards');
+  const cards = [
+    { title: 'Best Version 🔥', titleClass: 'best', text: data.best },
+    { title: 'Alternative 😏', titleClass: '', text: data.alt1 },
+    { title: 'Alternative ❤️', titleClass: '', text: data.alt2 },
+  ];
+
+  container.innerHTML = cards.map((c, i) => `
+    <div class="result-card">
+      <div class="rc-header">
+        <div class="rc-title ${c.titleClass}">${c.title}</div>
+        <div class="rc-actions">
+          <button class="rc-btn fav ${favorites.includes(c.text)?'active':''}" data-text="${escHtml(c.text)}" onclick="toggleFav(${JSON.stringify(c.text)}, this)">⭐ Save</button>
+          <button class="rc-btn" onclick="copyText(${JSON.stringify(c.text)})">📋 Copy</button>
+          <button class="rc-btn" onclick="shareText(${JSON.stringify(c.text)})">↗ Share</button>
+        </div>
+      </div>
+      <div class="rc-text">${escHtml(c.text)}</div>
+    </div>
+  `).join('');
+
+  document.getElementById('results').classList.add('show');
+  document.getElementById('history-section').classList.add('show');
+  renderFavs();
+  document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+// GENERATE
+document.getElementById('genBtn').addEventListener('click', async () => {
+  const msg = msgInput.value.trim();
+  if (!msg) { showToast('✏️ Please enter a message first!'); return; }
+
+  const ctx = document.getElementById('ctxInput').value.trim();
+  const intensity = slider.value;
+  const vibe = selectedVibe;
+
+  const genBtn = document.getElementById('genBtn');
+  const loader = document.getElementById('loader');
+  const results = document.getElementById('results');
+
+  genBtn.disabled = true;
+  loader.classList.add('show');
+  results.classList.remove('show');
+
+  const userPrompt = `Rewrite this message in a ${vibe} vibe at intensity level ${intensity}/10.
+${ctx ? `Context: ${ctx}` : ''}
+Original message: "${msg}"
+
+Return only valid JSON with keys: best, alt1, alt2`;
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        system: SYSTEM_PROMPT,
+        messages: [{ role: 'user', content: userPrompt }]
+      })
+    });
+
+    if (!res.ok) throw new Error(`API error ${res.status}`);
+    const data = await res.json();
+    let raw = data.content.filter(c => c.type === 'text').map(c => c.text).join('');
+    raw = raw.replace(/```json|```/g, '').trim();
+    const parsed = JSON.parse(raw);
+    if (!parsed.best || !parsed.alt1 || !parsed.alt2) throw new Error('Invalid response format');
+
+    renderResults(parsed);
+    saveToHistory(msg, ctx, vibe, intensity, parsed);
+  } catch (err) {
+    showToast('❌ Something went wrong. Try again!');
+    console.error(err);
+  } finally {
+    loader.classList.remove('show');
+    genBtn.disabled = false;
+  }
+});
+
+// INIT
+renderFavs();
+if (history.length) document.getElementById('history-section').classList.add('show');
+</script>
+</body>
+</html>
