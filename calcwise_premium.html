@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Inter',system-ui,sans-serif;background:#0a0a0f;color:#fff;min-height:100vh}
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+  :root{
+    --g1:#6366f1;--g2:#8b5cf6;--g3:#06b6d4;
+    --surface:#13131f;--surface2:#1a1a2e;--surface3:#1e1e35;
+    --border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.14);
+    --text:#fff;--text2:rgba(255,255,255,0.65);--text3:rgba(255,255,255,0.35);
+    --accent:#6366f1;--accent2:#8b5cf6;--green:#10b981;--amber:#f59e0b;
+  }
+
+  .header{background:linear-gradient(135deg,#0d0d1a 0%,#12122a 100%);border-bottom:1px solid var(--border);padding:0 20px}
+  .header-inner{display:flex;align-items:center;justify-content:space-between;height:56px;max-width:900px;margin:0 auto}
+  .logo{display:flex;align-items:center;gap:8px}
+  .logo-icon{width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,var(--g1),var(--g2));display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:#fff}
+  .logo-text{font-size:17px;font-weight:700;background:linear-gradient(90deg,#818cf8,#a78bfa,#22d3ee);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+  .logo-sub{font-size:10px;color:var(--text3);font-weight:400;letter-spacing:.5px;margin-top:-2px}
+  .header-right{display:flex;align-items:center;gap:10px}
+  .badge-free{font-size:10px;padding:3px 8px;border-radius:20px;background:linear-gradient(90deg,rgba(99,102,241,.25),rgba(139,92,246,.25));border:1px solid rgba(139,92,246,.35);color:#a78bfa;font-weight:500}
+
+  .ad-banner{background:linear-gradient(90deg,rgba(99,102,241,.08),rgba(6,182,212,.08));border:1px solid rgba(99,102,241,.2);border-radius:0;padding:10px 20px;text-align:center;font-size:11px;color:var(--text3);letter-spacing:.5px}
+  .ad-banner span{color:rgba(99,102,241,.6);font-weight:500}
+
+  .calc-tabs-wrap{background:#0d0d1a;border-bottom:1px solid var(--border);overflow-x:auto;padding:0 20px}
+  .calc-tabs{display:flex;gap:2px;min-width:max-content;height:44px;align-items:center}
+  .ctab{padding:6px 14px;border-radius:6px;font-size:12px;font-weight:500;cursor:pointer;color:var(--text3);border:none;background:transparent;transition:all .2s;white-space:nowrap;display:flex;align-items:center;gap:5px}
+  .ctab:hover{color:var(--text2);background:rgba(255,255,255,.05)}
+  .ctab.active{color:#fff;background:linear-gradient(135deg,rgba(99,102,241,.3),rgba(139,92,246,.2));border:1px solid rgba(99,102,241,.4)}
+  .ctab-icon{font-size:13px}
+
+  .main{max-width:900px;margin:0 auto;padding:20px;display:grid;grid-template-columns:1fr 200px;gap:20px;align-items:start}
+  .calc-area{}
+  .sidebar{}
+
+  .calc-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:20px;position:relative;overflow:hidden}
+  .calc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--g1),var(--g2),var(--g3))}
+
+  .calc-title{font-size:18px;font-weight:700;margin-bottom:4px}
+  .calc-sub{font-size:12px;color:var(--text3);margin-bottom:18px}
+
+  .field-group{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+  .field{display:flex;flex-direction:column;gap:5px}
+  .field label{font-size:11px;color:var(--text3);font-weight:500;letter-spacing:.3px;text-transform:uppercase}
+  .field input,.field select{height:38px;background:var(--surface2);border:1px solid var(--border2);border-radius:8px;color:#fff;font-size:13px;padding:0 10px;width:100%;outline:none;transition:border .2s}
+  .field input:focus,.field select:focus{border-color:var(--accent)}
+  .field select option{background:#1a1a2e}
+
+  .slider-row{margin-bottom:14px}
+  .slider-label{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+  .slider-label span:first-child{font-size:11px;color:var(--text3);font-weight:500;text-transform:uppercase;letter-spacing:.3px}
+  .slider-label span:last-child{font-size:13px;font-weight:600;color:#a78bfa}
+  input[type=range]{width:100%;-webkit-appearance:none;height:4px;border-radius:2px;background:var(--border2);outline:none}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border-radius:50%;background:linear-gradient(135deg,var(--g1),var(--g2));cursor:pointer;box-shadow:0 0 8px rgba(99,102,241,.5)}
+
+  .toggle-row{display:flex;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:3px;gap:3px;margin-bottom:14px}
+  .tbtn{flex:1;padding:6px;font-size:11px;font-weight:500;border-radius:6px;cursor:pointer;border:none;background:transparent;color:var(--text3);transition:all .2s;text-align:center}
+  .tbtn.active{background:linear-gradient(135deg,var(--g1),var(--g2));color:#fff}
+
+  .results-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:16px 0}
+  .res-card{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:12px 14px}
+  .res-card.main-card{background:linear-gradient(135deg,rgba(99,102,241,.15),rgba(139,92,246,.1));border-color:rgba(99,102,241,.35)}
+  .res-label{font-size:10px;color:var(--text3);font-weight:500;text-transform:uppercase;letter-spacing:.4px;margin-bottom:4px}
+  .res-val{font-size:20px;font-weight:700;color:#fff}
+  .res-val.accent{background:linear-gradient(90deg,#818cf8,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+  .res-val.green{color:var(--green)}
+  .res-sub{font-size:10px;color:var(--text3);margin-top:2px}
+
+  .bar-section{margin-top:14px}
+  .bar-title{font-size:11px;color:var(--text3);font-weight:500;text-transform:uppercase;letter-spacing:.4px;margin-bottom:10px}
+  .bar-row{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+  .bar-lbl{font-size:11px;color:var(--text2);width:80px;flex-shrink:0;text-align:right}
+  .bar-track{flex:1;height:8px;background:var(--surface3);border-radius:4px;overflow:hidden}
+  .bar-fill{height:100%;border-radius:4px;transition:width .5s cubic-bezier(.4,0,.2,1)}
+  .bar-amt{font-size:11px;color:var(--text2);min-width:70px;text-align:right}
+
+  .divider{border:none;border-top:1px solid var(--border);margin:16px 0}
+
+  .amort-wrap{max-height:180px;overflow-y:auto;border-radius:8px;border:1px solid var(--border)}
+  .amort-wrap::-webkit-scrollbar{width:4px}
+  .amort-wrap::-webkit-scrollbar-track{background:transparent}
+  .amort-wrap::-webkit-scrollbar-thumb{background:rgba(99,102,241,.4);border-radius:2px}
+  .atbl{width:100%;border-collapse:collapse;font-size:11px;table-layout:fixed}
+  .atbl th{padding:8px 10px;text-align:right;color:var(--text3);font-weight:500;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--surface2)}
+  .atbl th:first-child,.atbl td:first-child{text-align:left}
+  .atbl td{padding:7px 10px;text-align:right;border-bottom:1px solid var(--border);color:var(--text2)}
+  .atbl tr:last-child td{border-bottom:none}
+  .atbl tr:hover td{background:rgba(255,255,255,.03);color:#fff}
+
+  .ad-slot{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px;text-align:center;margin-bottom:16px}
+  .ad-slot-label{font-size:9px;color:var(--text3);letter-spacing:.5px;margin-bottom:8px;text-transform:uppercase}
+  .ad-slot-box{background:var(--surface2);border:1px dashed rgba(99,102,241,.2);border-radius:8px;height:120px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px}
+  .ad-slot-box .ad-icon{font-size:22px;opacity:.3}
+  .ad-slot-box p{font-size:10px;color:var(--text3)}
+  .ad-slot-box strong{font-size:11px;color:rgba(99,102,241,.6)}
+
+  .side-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:14px}
+  .side-title{font-size:11px;color:var(--text3);font-weight:500;text-transform:uppercase;letter-spacing:.4px;margin-bottom:10px}
+  .quick-btn{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:7px;cursor:pointer;transition:background .15s;margin-bottom:4px;border:none;background:transparent;width:100%;color:var(--text2);font-size:12px}
+  .quick-btn:hover{background:rgba(255,255,255,.05);color:#fff}
+  .quick-btn.active-q{background:linear-gradient(135deg,rgba(99,102,241,.2),rgba(139,92,246,.15));color:#a78bfa;border:1px solid rgba(99,102,241,.25)}
+  .quick-icon{width:26px;height:26px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0}
+
+  .slab-tbl{width:100%;border-collapse:collapse;font-size:11px}
+  .slab-tbl th{padding:6px 8px;text-align:left;color:var(--text3);font-weight:500;border-bottom:1px solid var(--border)}
+  .slab-tbl td{padding:6px 8px;color:var(--text2);border-bottom:1px solid var(--border)}
+  .slab-tbl tr:last-child td{border-bottom:none}
+  .regime-badge{display:inline-block;font-size:9px;padding:2px 7px;border-radius:20px;font-weight:600;margin-left:5px}
+  .badge-good{background:rgba(16,185,129,.15);color:#10b981;border:1px solid rgba(16,185,129,.3)}
+  .badge-warn{background:rgba(245,158,11,.15);color:#f59e0b;border:1px solid rgba(245,158,11,.3)}
+
+  .panel{display:none}.panel.active{display:block}
+
+  .gst-info-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+  .gst-info-card{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center}
+  .gst-info-lbl{font-size:9px;color:var(--text3);text-transform:uppercase;letter-spacing:.4px;margin-bottom:4px}
+  .gst-info-val{font-size:15px;font-weight:700;color:#fff}
+
+  .footer-ad{background:linear-gradient(90deg,rgba(99,102,241,.06),rgba(6,182,212,.06));border-top:1px solid var(--border);padding:14px 20px;text-align:center;margin-top:10px}
+  .footer-ad-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:10px}
+  .footer-ad-box{background:var(--surface);border:1px dashed rgba(99,102,241,.2);border-radius:8px;padding:10px 40px;font-size:10px;color:var(--text3)}
+
+  .pill{display:inline-flex;align-items:center;gap:4px;font-size:9px;padding:2px 8px;border-radius:20px;font-weight:600;text-transform:uppercase;letter-spacing:.4px}
+  .pill-new{background:rgba(99,102,241,.15);color:#818cf8;border:1px solid rgba(99,102,241,.25)}
+
+  @media(max-width:600px){
+    .main{grid-template-columns:1fr}
+    .sidebar{display:none}
+    .field-group{grid-template-columns:1fr}
+  }
+</style>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="logo">
+      <div class="logo-icon">C</div>
+      <div>
+        <div class="logo-text">CalcWise</div>
+        <div class="logo-sub">India's #1 Financial Suite</div>
+      </div>
+    </div>
+    <div class="header-right">
+      <span class="badge-free">100% Free</span>
+      <span class="pill pill-new">New</span>
+    </div>
+  </div>
+</div>
+
+<div class="ad-banner"><span>Advertisement</span> — Your AdSense 728×90 banner goes here</div>
+
+<div class="calc-tabs-wrap">
+  <div class="calc-tabs">
+    <button class="ctab active" onclick="switchCalc('gst',this)"><span class="ctab-icon">%</span> GST</button>
+    <button class="ctab" onclick="switchCalc('emi',this)"><span class="ctab-icon">₹</span> EMI</button>
+    <button class="ctab" onclick="switchCalc('sip',this)"><span class="ctab-icon">↗</span> SIP</button>
+    <button class="ctab" onclick="switchCalc('tax',this)"><span class="ctab-icon">⊕</span> Income Tax</button>
+    <button class="ctab" onclick="switchCalc('fd',this)"><span class="ctab-icon">🏦</span> FD</button>
+    <button class="ctab" onclick="switchCalc('rd',this)"><span class="ctab-icon">📅</span> RD</button>
+    <button class="ctab" onclick="switchCalc('lump',this)"><span class="ctab-icon">◈</span> Lumpsum</button>
+    <button class="ctab" onclick="switchCalc('cagr',this)"><span class="ctab-icon">∞</span> CAGR</button>
+  </div>
+</div>
+
+<div class="main">
+  <div class="calc-area">
+
+    <!-- GST -->
+    <div id="p-gst" class="panel active calc-card">
+      <div class="calc-title">GST Calculator</div>
+      <div class="calc-sub">Calculate GST for any amount — inclusive or exclusive</div>
+      <div class="toggle-row">
+        <button class="tbtn active" id="gst-excl" onclick="setGMode('excl')">Add GST (exclusive)</button>
+        <button class="tbtn" id="gst-incl" onclick="setGMode('incl')">Remove GST (inclusive)</button>
+      </div>
+      <div class="field-group">
+        <div class="field"><label>Amount (₹)</label><input type="number" id="g-amt" value="10000" oninput="cGST()"></div>
+        <div class="field"><label>GST rate</label>
+          <select id="g-rate" onchange="cGST()">
+            <option value="5">5% — Essentials</option>
+            <option value="12">12% — Standard</option>
+            <option value="18" selected>18% — Most goods</option>
+            <option value="28">28% — Luxury</option>
+          </select>
+        </div>
+      </div>
+      <div class="toggle-row">
+        <button class="tbtn active" id="gst-intra" onclick="setGState('intra')">Intra-state (CGST + SGST)</button>
+        <button class="tbtn" id="gst-inter" onclick="setGState('inter')">Inter-state (IGST)</button>
+      </div>
+      <div class="results-grid" id="gst-res"></div>
+      <div class="gst-info-grid" id="gst-split"></div>
+      <div style="margin-top:14px;padding:10px 14px;background:rgba(16,185,129,.06);border:1px solid rgba(16,185,129,.15);border-radius:8px;font-size:11px;color:rgba(16,185,129,.8)" id="gst-note"></div>
+    </div>
+
+    <!-- EMI -->
+    <div id="p-emi" class="panel calc-card">
+      <div class="calc-title">EMI Calculator</div>
+      <div class="calc-sub">Monthly installment for home, car or personal loans</div>
+      <div class="slider-row"><div class="slider-label"><span>Loan amount</span><span id="ev-amt">₹10,00,000</span></div><input type="range" min="50000" max="10000000" step="10000" value="1000000" id="e-amt" oninput="cEMI()"></div>
+      <div class="slider-row"><div class="slider-label"><span>Interest rate (p.a.)</span><span id="ev-rate">8.5%</span></div><input type="range" min="5" max="24" step="0.1" value="8.5" id="e-rate" oninput="cEMI()"></div>
+      <div class="slider-row"><div class="slider-label"><span>Tenure (months)</span><span id="ev-ten">240</span></div><input type="range" min="12" max="360" step="6" value="240" id="e-ten" oninput="cEMI()"></div>
+      <div class="results-grid" id="emi-res"></div>
+      <div class="bar-section"><div class="bar-title">Payment breakup</div><div id="emi-bars"></div></div>
+      <div class="divider"></div>
+      <div class="bar-title" style="margin-bottom:8px">Amortization schedule</div>
+      <div class="amort-wrap"><table class="atbl"><thead><tr><th>Mo</th><th>EMI</th><th>Principal</th><th>Interest</th><th>Balance</th></tr></thead><tbody id="emi-amort"></tbody></table></div>
+    </div>
+
+    <!-- SIP -->
+    <div id="p-sip" class="panel calc-card">
+      <div class="calc-title">SIP Calculator</div>
+      <div class="calc-sub">Project your mutual fund SIP returns over time</div>
+      <div class="slider-row"><div class="slider-label"><span>Monthly investment</span><span id="sv-amt">₹10,000</span></div><input type="range" min="500" max="100000" step="500" value="10000" id="s-amt" oninput="cSIP()"></div>
+      <div class="slider-row"><div class="slider-label"><span>Expected return (p.a.)</span><span id="sv-rate">12%</span></div><input type="range" min="4" max="30" step="0.5" value="12" id="s-rate" oninput="cSIP()"></div>
+      <div class="slider-row"><div class="slider-label"><span>Duration</span><span id="sv-yr">15 years</span></div><input type="range" min="1" max="40" step="1" value="15" id="s-yr" oninput="cSIP()"></div>
+      <div class="results-grid" id="sip-res"></div>
+      <div class="bar-section"><div class="bar-title">Growth breakup</div><div id="sip-bars"></div></div>
+    </div>
+
+    <!-- Tax -->
+    <div id="p-tax" class="panel calc-card">
+      <div class="calc-title">Income Tax Calculator</div>
+      <div class="calc-sub">FY 2024-25 — New vs Old regime comparison</div>
+      <div class="slider-row"><div class="slider-label"><span>Annual income</span><span id="tv-inc">₹12,00,000</span></div><input type="range" min="250000" max="5000000" step="10000" value="1200000" id="t-inc" oninput="cTax()"></div>
+      <div class="slider-row"><div class="slider-label"><span>Deductions (80C/80D etc.)</span><span id="tv-ded">₹1,50,000</span></div><input type="range" min="0" max="350000" step="5000" value="150000" id="t-ded" oninput="cTax()"></div>
+      <div class="field-group" style="margin-bottom:14px"><div class="field"><label>Age group</label><select id="t-age" onchange="cTax()"><option value="g">Below 60</option><option value="s">60–80 Senior</option><option value="ss">80+ Super Senior</option></select></div></div>
+      <div class="toggle-row">
+        <button class="tbtn active" id="tx-new" onclick="setTReg('new')">New regime</button>
+        <button class="tbtn" id="tx-old" onclick="setTReg('old')">Old regime</button>
+      </div>
+      <div class="results-grid" id="tax-res"></div>
+      <div class="bar-section"><div class="bar-title">Slab breakdown</div><table class="slab-tbl" id="tax-slabs"></table></div>
+    </div>
+
+    <!-- FD -->
+    <div id="p-fd" class="panel calc-card">
+      <div class="calc-title">FD Calculator</div>
+      <div class="calc-sub">Fixed deposit maturity amount</div>
+      <div class="slider-row"><div class="slider-label"><span>Principal amount</span><span id="fv-p">₹1,00,000</span></div><input type="range" min="1000" max="5000000" step="1000" value="100000" id="f-p" oninput="cFD()"></div>
+      <div class="slider-row"><div class="slider-label"><span>Interest rate (p.a.)</span><span id="fv-r">7%</span></div><input type="range" min="3" max="12" step="0.25" value="7" id="f-r" oninput="cFD()"></div>
+      <div class="slider-row"><div class="slider-label"><span>Tenure</span><span id="fv-t">3 years</span></div><input type="range" min="1" max="10" step="1" value="3" id="f-t" oninput="cFD()"></div>
+      <div class="toggle-row"><button class="tbtn active" id="fd-c" onclick="setFDComp('quarterly')">Quarterly</button><button class="tbtn" id="fd-m" onclick="setFDComp('monthly')">Monthly</button><button class="tbtn" id="fd-a" onclick="setFDComp('annual')">Annually</button></div>
+      <div class="results-grid" id="fd-res"></div>
+    </div>
+
+    <!-- RD -->
+    <div id="p-rd" class="panel calc-card">
+      <div class="calc-title">RD Calculator</div>
+      <div class="calc-sub">Recurring deposit maturity amount</div>
+      <div class="slider-row"><div class="slider-label"><span>Monthly deposit</span><span id="rv-m">₹5,000</span></div><input type="range" min="100" max="50000" step="100" value="5000" id="r-m" oninput="cRD()"></div>
+      <div class="slider-row"><div class="slider-label"><span>Interest rate (p.a.)</span><span id="rv-r">6.5%</span></div><input type="range" min="3" max="10" step="0.25" value="6.5" id="r-r" oninput="cRD()"></div>
+      <div class="slider-row"><div class="slider-label"><span>Tenure</span><span id="rv-t">2 years</span></div><input type="range" min="1" max="10" step="1" value="2" id="r-t" oninput="cRD()"></div>
+      <div class="results-grid" id="rd-res"></div>
+    </div>
+
+    <!-- Lumpsum -->
+    <div id="p-lump" class="panel calc-card">
+      <div class="calc-title">Lumpsum Calculator</div>
+      <div class="calc-sub">One-time mutual fund investment growth</div>
+      <div class="slider-row"><div class="slider-label"><span>Investment amount</span><span id="lv-p">₹5,00,000</span></div><input type="range" min="10000" max="10000000" step="10000" value="500000" id="l-p" oninput="cLump()"></div>
+      <div class="slider-row"><div class="slider-label"><span>Expected return (p.a.)</span><span id="lv-r">12%</span></div><input type="range" min="4" max="30" step="0.5" value="12" id="l-r" oninput="cLump()"></div>
+      <div class="slider-row"><div class="slider-label"><span>Duration</span><span id="lv-t">10 years</span></div><input type="range" min="1" max="40" step="1" value="10" id="l-t" oninput="cLump()"></div>
+      <div class="results-grid" id="lump-res"></div>
+      <div class="bar-section"><div class="bar-title">Growth breakup</div><div id="lump-bars"></div></div>
+    </div>
+
+    <!-- CAGR -->
+    <div id="p-cagr" class="panel calc-card">
+      <div class="calc-title">CAGR Calculator</div>
+      <div class="calc-sub">Compound annual growth rate of any investment</div>
+      <div class="field-group">
+        <div class="field"><label>Initial value (₹)</label><input type="number" id="cg-i" value="100000" oninput="cCAGR()"></div>
+        <div class="field"><label>Final value (₹)</label><input type="number" id="cg-f" value="250000" oninput="cCAGR()"></div>
+      </div>
+      <div class="slider-row"><div class="slider-label"><span>Duration (years)</span><span id="cv-t">5 years</span></div><input type="range" min="1" max="30" step="1" value="5" id="cg-t" oninput="cCAGR()"></div>
+      <div class="results-grid" id="cagr-res"></div>
+    </div>
+
+  </div>
+
+  <div class="sidebar">
+    <div class="ad-slot">
+      <div class="ad-slot-label">Advertisement</div>
+      <div class="ad-slot-box">
+        <div class="ad-icon">◈</div>
+        <strong>300 × 250</strong>
+        <p>AdSense slot here</p>
+      </div>
+    </div>
+
+    <div class="side-card">
+      <div class="side-title">Quick switch</div>
+      <button class="quick-btn active-q" onclick="switchCalc('gst',null,this)"><div class="quick-icon" style="background:rgba(16,185,129,.15);color:#10b981">%</div>GST</button>
+      <button class="quick-btn" onclick="switchCalc('emi',null,this)"><div class="quick-icon" style="background:rgba(99,102,241,.15);color:#818cf8">₹</div>EMI</button>
+      <button class="quick-btn" onclick="switchCalc('sip',null,this)"><div class="quick-icon" style="background:rgba(6,182,212,.15);color:#22d3ee">↗</div>SIP</button>
+      <button class="quick-btn" onclick="switchCalc('tax',null,this)"><div class="quick-icon" style="background:rgba(245,158,11,.15);color:#f59e0b">⊕</div>Tax</button>
+      <button class="quick-btn" onclick="switchCalc('fd',null,this)"><div class="quick-icon" style="background:rgba(139,92,246,.15);color:#a78bfa">🏦</div>FD</button>
+      <button class="quick-btn" onclick="switchCalc('rd',null,this)"><div class="quick-icon" style="background:rgba(244,63,94,.15);color:#fb7185">📅</div>RD</button>
+      <button class="quick-btn" onclick="switchCalc('lump',null,this)"><div class="quick-icon" style="background:rgba(16,185,129,.15);color:#34d399">◈</div>Lumpsum</button>
+      <button class="quick-btn" onclick="switchCalc('cagr',null,this)"><div class="quick-icon" style="background:rgba(99,102,241,.15);color:#818cf8">∞</div>CAGR</button>
+    </div>
+
+    <div class="side-card">
+      <div class="side-title">Tip</div>
+      <p style="font-size:11px;color:var(--text3);line-height:1.6" id="tip-text">Bookmark this page to instantly access all calculators anytime!</p>
+    </div>
+
+    <div class="ad-slot">
+      <div class="ad-slot-label">Advertisement</div>
+      <div class="ad-slot-box">
+        <div class="ad-icon">◈</div>
+        <strong>160 × 300</strong>
+        <p>Skyscraper ad slot</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer-ad">
+  <div class="footer-ad-inner">
+    <div class="footer-ad-box">728 × 90 — AdSense footer banner slot</div>
+  </div>
+</div>
+
+<script>
+const fi = id => document.getElementById(id);
+const fmtI = n => '₹' + Math.round(n).toLocaleString('en-IN');
+const fmtL = n => {
+  if(n>=10000000) return '₹'+(n/10000000).toFixed(2)+' Cr';
+  if(n>=100000) return '₹'+(n/100000).toFixed(2)+' L';
+  return fmtI(n);
+};
+
+const tips = [
+  'Bookmark this page — all 8 calculators at your fingertips!',
+  'GST tip: 18% applies to most services in India.',
+  'SIP for 20+ years can multiply your wealth 10×.',
+  'New tax regime is better if your deductions are under ₹2L.',
+  'FD interest is taxable — factor TDS into returns.',
+];
+let tipI = 0;
+setInterval(()=>{ tipI=(tipI+1)%tips.length; fi('tip-text').textContent=tips[tipI]; }, 4000);
+
+let currentCalc = 'gst';
+function switchCalc(id, tabEl, sideEl){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  fi('p-'+id).classList.add('active');
+  document.querySelectorAll('.ctab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.quick-btn').forEach(b=>b.classList.remove('active-q'));
+  if(tabEl) tabEl.classList.add('active');
+  if(sideEl) sideEl.classList.add('active-q');
+  currentCalc = id;
+  const calcs = {gst:cGST,emi:cEMI,sip:cSIP,tax:cTax,fd:cFD,rd:cRD,lump:cLump,cagr:cCAGR};
+  calcs[id]&&calcs[id]();
+}
+
+function resCard(lbl,val,cls=''){return `<div class="res-card${cls?(' '+cls):''}"><div class="res-label">${lbl}</div><div class="res-val${cls.includes('main')?'' :''}">${val}</div></div>`}
+function resCardC(lbl,val,color='accent'){return `<div class="res-card main-card"><div class="res-label">${lbl}</div><div class="res-val ${color}">${val}</div></div>`}
+
+function bar(lbl,val,max,color){
+  const pct=Math.min(100,Math.round(val/max*100));
+  return `<div class="bar-row"><span class="bar-lbl">${lbl}</span><div class="bar-track"><div class="bar-fill" style="width:${pct}%;background:${color}"></div></div><span class="bar-amt">${fmtL(val)}</span></div>`;
+}
+
+// GST
+let gMode='excl', gState='intra';
+function setGMode(m){gMode=m;fi('gst-excl').className='tbtn'+(m==='excl'?' active':'');fi('gst-incl').className='tbtn'+(m==='incl'?' active':'');cGST()}
+function setGState(s){gState=s;fi('gst-intra').className='tbtn'+(s==='intra'?' active':'');fi('gst-inter').className='tbtn'+(s==='inter'?' active':'');cGST()}
+function cGST(){
+  const rate=+fi('g-rate').value, amt=+fi('g-amt').value||0;
+  let base,gst,total;
+  if(gMode==='excl'){base=amt;gst=base*rate/100;total=base+gst;}
+  else{total=amt;base=amt/(1+rate/100);gst=total-base;}
+  fi('gst-res').innerHTML=resCardC('GST amount',fmtI(gst),'accent')+resCard('Base amount',fmtI(base))+resCard('Total amount',fmtI(total))+resCard('Effective rate',rate+'%');
+  let split='';
+  if(gState==='intra'){
+    split=`<div class="gst-info-card"><div class="gst-info-lbl">CGST ${rate/2}%</div><div class="gst-info-val">${fmtI(gst/2)}</div></div><div class="gst-info-card"><div class="gst-info-lbl">SGST ${rate/2}%</div><div class="gst-info-val">${fmtI(gst/2)}</div></div>`;
+  } else {
+    split=`<div class="gst-info-card" style="grid-column:1/-1"><div class="gst-info-lbl">IGST ${rate}%</div><div class="gst-info-val">${fmtI(gst)}</div></div>`;
+  }
+  fi('gst-split').innerHTML=split;
+  fi('gst-note').textContent=`For ₹${(amt||0).toLocaleString('en-IN')} ${gMode==='excl'?'(exclusive)':'(inclusive)'} at ${rate}% GST — ${gState==='intra'?'split as CGST + SGST':'charged as IGST'}`;
+}
+cGST();
+
+// EMI
+function cEMI(){
+  const P=+fi('e-amt').value, r=+fi('e-rate').value/1200, n=+fi('e-ten').value;
+  fi('ev-amt').textContent=fmtL(P);fi('ev-rate').textContent=(+fi('e-rate').value).toFixed(1)+'%';fi('ev-ten').textContent=n;
+  const emi=P*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);
+  const total=emi*n, interest=total-P;
+  fi('emi-res').innerHTML=resCardC('Monthly EMI',fmtI(emi))+resCard('Total interest',fmtL(interest))+resCard('Total payment',fmtL(total))+resCard('Principal',fmtL(P));
+  fi('emi-bars').innerHTML=bar('Principal',P,total,'linear-gradient(90deg,#6366f1,#8b5cf6)')+bar('Interest',interest,total,'linear-gradient(90deg,#06b6d4,#0891b2)');
+  let rows='',bal=P;
+  for(let i=1;i<=n;i++){const int=bal*r,prin=emi-int;bal=Math.max(0,bal-prin);rows+=`<tr><td>${i}</td><td>${fmtI(emi)}</td><td>${fmtI(prin)}</td><td>${fmtI(int)}</td><td>${fmtI(bal)}</td></tr>`;}
+  fi('emi-amort').innerHTML=rows;
+}
+cEMI();
+
+// SIP
+function cSIP(){
+  const m=+fi('s-amt').value, r=+fi('s-rate').value/100/12, n=+fi('s-yr').value*12;
+  fi('sv-amt').textContent=fmtI(m);fi('sv-rate').textContent=+fi('s-rate').value+'%';fi('sv-yr').textContent=fi('s-yr').value+' years';
+  const fv=m*(Math.pow(1+r,n)-1)*(1+r)/r, inv=m*n, gains=fv-inv;
+  fi('sip-res').innerHTML=resCardC('Maturity value',fmtL(fv),'green')+resCard('Amount invested',fmtL(inv))+resCard('Est. gains',fmtL(gains))+resCard('Total return',((fv/inv-1)*100).toFixed(1)+'%');
+  fi('sip-bars').innerHTML=bar('Invested',inv,fv,'linear-gradient(90deg,#6366f1,#8b5cf6)')+bar('Gains',gains,fv,'linear-gradient(90deg,#10b981,#059669)');
+}
+cSIP();
+
+// Tax
+let tReg='new';
+function setTReg(r){tReg=r;fi('tx-new').className='tbtn'+(r==='new'?' active':'');fi('tx-old').className='tbtn'+(r==='old'?' active':'');cTax()}
+function cTax(){
+  const inc=+fi('t-inc').value,ded=+fi('t-ded').value,age=fi('t-age').value;
+  fi('tv-inc').textContent=fmtL(inc);fi('tv-ded').textContent=fmtI(ded);
+  let tax=0,slabs=[];
+  if(tReg==='new'){
+    let rem=Math.max(0,inc-75000);
+    const ns=[[300000,0],[400000,5],[300000,10],[300000,15],[300000,20],[Infinity,30]];
+    const nl=['0–3L','3–7L','7–10L','10–12L','12–15L','15L+'];
+    let prev=0;
+    ns.forEach((s,i)=>{const chunk=s[0]===Infinity?Math.max(0,rem-prev):Math.min(Math.max(0,rem-prev),s[0]);const t=chunk*s[1]/100;tax+=t;if(chunk>0)slabs.push({r:nl[i],rate:s[1]+'%',taxable:fmtI(chunk),tax:fmtI(t)});prev+=s[0]===Infinity?0:s[0];});
+    if(inc<=700000){tax=0;slabs=[{r:'All',rate:'0%',taxable:fmtL(inc),tax:'₹0 (87A)'}];}
+  } else {
+    let taxable=Math.max(0,inc-50000-ded);
+    const os=age==='ss'?[[500000,0],[500000,20],[Infinity,30]]:age==='s'?[[300000,0],[200000,5],[300000,20],[Infinity,30]]:[[250000,0],[250000,5],[500000,20],[Infinity,30]];
+    const ol=age==='ss'?['0–5L','5–10L','10L+']:age==='s'?['0–3L','3–5L','5–10L','10L+']:['0–2.5L','2.5–5L','5–10L','10L+'];
+    let prev=0;
+    os.forEach((s,i)=>{const chunk=s[0]===Infinity?Math.max(0,taxable-prev):Math.min(Math.max(0,taxable-prev),s[0]);const t=chunk*s[1]/100;tax+=t;if(chunk>0)slabs.push({r:ol[i],rate:s[1]+'%',taxable:fmtI(chunk),tax:fmtI(t)});prev+=s[0]===Infinity?0:s[0];});
+    if(taxable<=500000){tax=0;slabs=[{r:'All',rate:'0%',taxable:fmtL(taxable),tax:'₹0 (87A)'}];}
+  }
+  const cess=tax*0.04,total=tax+cess,eff=inc>0?(total/inc*100).toFixed(1):0;
+  fi('tax-res').innerHTML=resCardC('Total tax',fmtL(total),'accent')+resCard('Base tax',fmtL(tax))+resCard('Cess 4%',fmtL(cess))+resCard('Eff. rate',eff+'%');
+  fi('tax-slabs').innerHTML=`<thead><tr><th>Slab</th><th>Rate</th><th>Taxable</th><th>Tax</th></tr></thead><tbody>${slabs.map(s=>`<tr><td>${s.r}</td><td>${s.rate}</td><td>${s.taxable}</td><td>${s.tax}</td></tr>`).join('')}</tbody>`;
+}
+cTax();
+
+// FD
+let fdComp='quarterly';
+function setFDComp(c){fdComp=c;['c','m','a'].forEach(x=>fi('fd-'+x).className='tbtn');fi('fd-'+{quarterly:'c',monthly:'m',annual:'a'}[c]).className='tbtn active';cFD()}
+function cFD(){
+  const P=+fi('f-p').value, r=+fi('f-r').value/100, t=+fi('f-t').value;
+  fi('fv-p').textContent=fmtL(P);fi('fv-r').textContent=(+fi('f-r').value)+'%';fi('fv-t').textContent=t+' years';
+  const n={quarterly:4,monthly:12,annual:1}[fdComp];
+  const mat=P*Math.pow(1+r/n,n*t);
+  const interest=mat-P;
+  fi('fd-res').innerHTML=resCardC('Maturity amount',fmtL(mat),'green')+resCard('Principal',fmtL(P))+resCard('Interest earned',fmtL(interest))+resCard('Return',((interest/P)*100).toFixed(1)+'%');
+}
+cFD();
+
+// RD
+function cRD(){
+  const m=+fi('r-m').value, r=+fi('r-r').value/100/4, n=+fi('r-t').value*4;
+  fi('rv-m').textContent=fmtI(m);fi('rv-r').textContent=(+fi('r-r').value)+'%';fi('rv-t').textContent=fi('r-t').value+' years';
+  const mat=m*(Math.pow(1+r,n)-1)*(1+r)/r;
+  const invested=m*+fi('r-t').value*12, interest=mat-invested;
+  fi('rd-res').innerHTML=resCardC('Maturity amount',fmtL(mat),'green')+resCard('Total deposited',fmtL(invested))+resCard('Interest earned',fmtL(interest))+resCard('Return',((interest/invested)*100).toFixed(1)+'%');
+}
+cRD();
+
+// Lumpsum
+function cLump(){
+  const P=+fi('l-p').value, r=+fi('l-r').value/100, t=+fi('l-t').value;
+  fi('lv-p').textContent=fmtL(P);fi('lv-r').textContent=+fi('l-r').value+'%';fi('lv-t').textContent=t+' years';
+  const mat=P*Math.pow(1+r,t), gains=mat-P;
+  fi('lump-res').innerHTML=resCardC('Maturity value',fmtL(mat),'green')+resCard('Invested',fmtL(P))+resCard('Gains',fmtL(gains))+resCard('Multiplier',(mat/P).toFixed(2)+'×');
+  fi('lump-bars').innerHTML=bar('Invested',P,mat,'linear-gradient(90deg,#6366f1,#8b5cf6)')+bar('Gains',gains,mat,'linear-gradient(90deg,#10b981,#059669)');
+}
+cLump();
+
+// CAGR
+function cCAGR(){
+  const i=+fi('cg-i').value||1, f=+fi('cg-f').value||1, t=+fi('cg-t').value;
+  fi('cv-t').textContent=t+' years';
+  const cagr=(Math.pow(f/i,1/t)-1)*100;
+  const gain=f-i;
+  fi('cagr-res').innerHTML=resCardC('CAGR',cagr.toFixed(2)+'%','accent')+resCard('Initial value',fmtL(i))+resCard('Final value',fmtL(f))+resCard('Total gain',fmtL(gain));
+}
+cCAGR();
+</script>
