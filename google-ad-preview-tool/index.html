@@ -1313,8 +1313,8 @@
       <div style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:600">Live Preview</div>
       <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
         <div class="device-toggle" id="device-toggle">
-          <button class="device-btn active" onclick="setDevice('desktop',this)">🖥 Desktop</button>
-          <button class="device-btn" onclick="setDevice('mobile',this)">📱 Mobile</button>
+          <button class="device-btn" onclick="setDevice('desktop',this)">🖥 Desktop</button>
+          <button class="device-btn active" onclick="setDevice('mobile',this)">📱 Mobile</button>
         </div>
         <div class="preview-tab-bar" id="preview-tab-bar">
           <button class="preview-tab active" onclick="setPreviewTab('preview',this)">Preview</button>
@@ -1521,7 +1521,7 @@
 <script>
 // ─── STATE ───────────────────────────────────────────────────────────
 let currentFormat = 'rsa';
-let currentDevice = 'desktop';
+let currentDevice = 'mobile';
 let currentPreviewTab = 'preview';
 let headlineCount = 0;
 let descCount = 0;
@@ -2261,7 +2261,7 @@ function setPreviewTab(tab, btn) {
 }
 
 // ─── AI SUGGESTIONS (Gemini) ──────────────────────────────────────────
-const GEMINI_API_KEY = 'AQ.Ab8RN6IV71hTKZyIdxgJG2uOslQm36Vi2M-wKyxWKsvlBqXTWA';
+const GEMINI_API_KEY = 'AQ.Ab8RN6K2MIhaORRyd6Zr5uvupkJ0KbkaQyA9oFOOi5Xc1j0Q_w';
 
 async function getAiSuggestions() {
   const keyword = document.getElementById('ai-keyword').value.trim();
