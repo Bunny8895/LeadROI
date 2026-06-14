@@ -1,475 +1,1536 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" itemscope itemtype="https://schema.org/LocalBusiness">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LeadROI | Engineering Digital Legacies</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#1A202C',
-                        secondary: '#2D3748',
-                        accent: '#B8860B',
-                        accentLight: '#D4AF37',
-                        highlight: '#20B2AA',
-                        offWhite: '#F5F5F5',
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        display: ['Montserrat', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
-                    },
-                    animation: {
-                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
-                        'float': 'float 6s ease-in-out infinite',
-                    },
-                    keyframes: {
-                        fadeInUp: {
-                            '0%': { opacity: '0', transform: 'translateY(20px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        },
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-10px)' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        .glass-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .hero-gradient {
-            background: linear-gradient(135deg, #1A202C 0%, #2D3748 100%);
-        }
-        .text-gradient-gold {
-            background: linear-gradient(to right, #B8860B, #D4AF37);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #1A202C; }
-        ::-webkit-scrollbar-thumb { background: #B8860B; border-radius: 10px; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LeadROI — Performance Marketing Agency in Hyderabad | Google Ads + Meta Ads</title>
+<meta name="description" content="LeadROI is a performance marketing agency in Hyderabad specialising in Google Ads, Meta Ads and landing pages. We generate quality leads that bring real ROI — not junk traffic. Starting ₹10,000/month.">
+<meta name="keywords" content="performance marketing agency hyderabad, google ads agency hyderabad, meta ads agency hyderabad, lead generation agency hyderabad, google ads management hyderabad, facebook ads hyderabad, digital marketing agency hyderabad, ppc agency hyderabad">
+<meta name="author" content="LeadROI">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><defs><linearGradient id=%22g%22 x1=%220%25%22 y1=%220%25%22 x2=%22100%25%22 y2=%22100%25%22><stop offset=%220%25%22 stop-color=%22%234f6ef7%22/><stop offset=%22100%25%22 stop-color=%22%237c3aed%22/></linearGradient><rect width=%22100%22 height=%22100%22 rx=%2218%22 fill=%22url(%23g)%22/></defs><rect width=%22100%22 height=%22100%22 rx=%2218%22 fill=%22url(%23g)%22/><text y=%22.9em%22 font-size=%2272%22 x=%2250%25%22 text-anchor=%22middle%22>⚡</text></svg>">
+<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2218%22 fill=%22%234f6ef7%22/><text y=%22.9em%22 font-size=%2272%22 x=%2250%25%22 text-anchor=%22middle%22>⚡</text></svg>">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://leadroi.in">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="LeadROI — Performance Marketing Agency in Hyderabad">
+<meta property="og:description" content="Google Ads + Meta Ads + Landing Pages. Quality leads. Real ROI. No junk traffic. Starting ₹10,000/month.">
+<meta property="og:url" content="https://leadroi.in">
+<meta property="og:site_name" content="LeadROI">
+<meta property="og:locale" content="en_IN">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="LeadROI — Performance Marketing Agency in Hyderabad">
+<meta name="twitter:description" content="Google Ads + Meta Ads + Landing Pages. Quality leads. Real ROI. Starting ₹10,000/month.">
+
+<!-- Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LocalBusiness",
+      "name": "LeadROI",
+      "description": "Performance marketing agency in Hyderabad specialising in Google Ads, Meta Ads and landing pages that generate quality leads.",
+      "url": "https://leadroi.in",
+      "telephone": "+918121197099",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Hyderabad",
+        "addressRegion": "Telangana",
+        "addressCountry": "IN"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "17.3850",
+        "longitude": "78.4867"
+      },
+      "priceRange": "₹₹",
+      "openingHours": "Mo-Sa 09:00-19:00",
+      "sameAs": ["https://wa.me/918121197099"],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Performance Marketing Services",
+        "itemListElement": [
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Google Ads Management"}, "price": "10000", "priceCurrency": "INR"},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Meta Ads Management"}, "price": "10000", "priceCurrency": "INR"},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Landing Page Design"}, "price": "0", "priceCurrency": "INR"}
+        ]
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type": "Question", "name": "What is the minimum ad budget needed?", "acceptedAnswer": {"@type": "Answer", "text": "We recommend minimum ₹15,000–20,000/month ad spend for Google Ads. For Meta Ads, ₹10,000/month can work for local Hyderabad businesses."}},
+        {"@type": "Question", "name": "How soon will I see results from Google Ads?", "acceptedAnswer": {"@type": "Answer", "text": "Google Ads typically shows results in 2–4 weeks. Meta Ads can take 4–6 weeks to optimize. We set realistic expectations from day one."}},
+        {"@type": "Question", "name": "Is ₹10,000 the ad budget or management fee?", "acceptedAnswer": {"@type": "Answer", "text": "₹10,000 is LeadROI's management fee. Your ad budget is separate and goes directly to Google or Meta — we never touch it."}}
+      ]
+    }
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #0a0c12;
+  --bg2: #10131c;
+  --bg3: #181c28;
+  --bg4: #1f2335;
+  --border: #252a3d;
+  --border2: #2e3450;
+  --text: #e8eaf0;
+  --text2: #9aa0b8;
+  --text3: #555d7a;
+  --accent: #4f6ef7;
+  --accent2: #3d56e0;
+  --accent-glow: rgba(79,110,247,0.15);
+  --green: #22c55e;
+  --green-bg: rgba(34,197,94,0.1);
+  --purple: #7c3aed;
+  --orange: #f59e0b;
+  --red: #ef4444;
+  --wa: #25d366;
+  --radius: 12px;
+  --shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; }
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 4px; }
+
+/* ── NAV ── */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10,12,18,0.85);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 32px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.nav-logo {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.nav-logo-icon {
+  width: 32px; height: 32px;
+  background: linear-gradient(135deg, var(--accent), var(--purple));
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 14px;
+  color: var(--text2);
+  transition: color 0.2s;
+  font-weight: 500;
+}
+
+.nav-links a:hover { color: var(--text); }
+
+.nav-cta {
+  background: var(--wa);
+  color: #fff !important;
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.nav-cta:hover { background: #20bd5a; transform: translateY(-1px); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 92vh;
+  display: flex;
+  align-items: center;
+  padding: 80px 32px 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background glow blobs */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -100px; left: -100px;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(79,110,247,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -100px; right: -100px;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(124,58,237,0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 480px;
+  gap: 60px;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(79,110,247,0.1);
+  color: var(--accent);
+  border: 1px solid rgba(79,110,247,0.25);
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 52px;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.hero h1 .highlight {
+  background: linear-gradient(135deg, var(--accent), var(--purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-sub {
+  font-size: 17px;
+  color: var(--text2);
+  line-height: 1.7;
+  margin-bottom: 32px;
+  max-width: 480px;
+}
+
+.hero-btns {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 36px;
+}
+
+.btn-wa {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--wa);
+  color: #fff;
+  padding: 14px 24px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  transition: all 0.2s;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.3);
+}
+
+.btn-wa:hover { background: #20bd5a; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(37,211,102,0.4); }
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border2);
+  padding: 14px 24px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-glow); }
+
+.trust-pills {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.trust-pill {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  color: var(--text3);
+}
+
+.trust-pill::before { content: '✓'; color: var(--green); font-weight: 700; }
+
+/* Hero SERP mockup */
+.hero-mockup {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.05);
+}
+
+.mockup-bar {
+  background: #f1f3f4;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.mockup-dots { display: flex; gap: 5px; }
+.mockup-dot { width: 10px; height: 10px; border-radius: 50%; }
+
+.mockup-search {
+  flex: 1;
+  background: #fff;
+  border: 1px solid #dadce0;
+  border-radius: 20px;
+  padding: 5px 12px;
+  font-size: 12px;
+  color: #202124;
+  font-family: Arial;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.mockup-body { padding: 14px 16px; }
+
+.mockup-ad {
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.mockup-sponsored {
+  display: inline-block;
+  font-size: 10px;
+  color: #006621;
+  border: 1px solid #006621;
+  padding: 1px 4px;
+  border-radius: 2px;
+  margin-bottom: 3px;
+  font-family: Arial;
+}
+
+.mockup-url { font-size: 11px; color: #202124; font-family: Arial; margin-bottom: 2px; }
+.mockup-title { font-size: 16px; color: #1a0dab; font-family: Arial; margin-bottom: 3px; cursor: pointer; }
+.mockup-title:hover { text-decoration: underline; }
+.mockup-desc { font-size: 11px; color: #4d5156; font-family: Arial; line-height: 1.4; }
+
+.mockup-sitelinks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.mockup-sitelink {
+  border: 1px solid #dadce0;
+  border-radius: 6px;
+  padding: 6px 8px;
+  font-size: 11px;
+  color: #1a0dab;
+  font-family: Arial;
+  cursor: pointer;
+}
+
+.mockup-placeholder {
+  height: 8px;
+  background: #f0f0f0;
+  border-radius: 4px;
+  margin: 6px 0;
+}
+
+/* ── SECTIONS ── */
+section { padding: 80px 32px; }
+.section-inner { max-width: 1100px; margin: 0 auto; }
+
+.section-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+  margin-bottom: 14px;
+  letter-spacing: -0.5px;
+}
+
+.section-sub {
+  font-size: 16px;
+  color: var(--text2);
+  max-width: 560px;
+  line-height: 1.7;
+  margin-bottom: 48px;
+}
+
+/* ── TRUST BAR ── */
+.trust-bar {
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 20px 32px;
+}
+
+.trust-bar-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text2);
+  font-weight: 500;
+}
+
+.trust-item-icon { font-size: 16px; }
+
+/* ── PROBLEM ── */
+.problem-section { background: var(--bg2); }
+
+.problem-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.problem-card {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  transition: border-color 0.2s;
+}
+
+.problem-card:hover { border-color: rgba(239,68,68,0.3); }
+
+.problem-icon { font-size: 28px; margin-bottom: 12px; display: block; }
+.problem-title { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+.problem-desc { font-size: 13px; color: var(--text3); line-height: 1.5; }
+
+/* ── SERVICES ── */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.service-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 32px 28px;
+  transition: all 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+
+.service-card:nth-child(1)::before { background: linear-gradient(90deg, #4f6ef7, #7c3aed); }
+.service-card:nth-child(2)::before { background: linear-gradient(90deg, #f59e0b, #ef4444); }
+.service-card:nth-child(3)::before { background: linear-gradient(90deg, #22c55e, #06b6d4); }
+
+.service-card:hover { border-color: var(--border2); transform: translateY(-4px); box-shadow: var(--shadow); }
+.service-card:hover::before { opacity: 1; }
+
+.service-icon-wrap {
+  width: 52px; height: 52px;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.service-card:nth-child(1) .service-icon-wrap { background: rgba(79,110,247,0.1); }
+.service-card:nth-child(2) .service-icon-wrap { background: rgba(245,158,11,0.1); }
+.service-card:nth-child(3) .service-icon-wrap { background: rgba(34,197,94,0.1); }
+
+.service-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.service-desc { font-size: 14px; color: var(--text2); line-height: 1.6; margin-bottom: 16px; }
+
+.service-features { list-style: none; padding: 0; }
+.service-features li {
+  font-size: 13px;
+  color: var(--text3);
+  padding: 4px 0;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.service-features li::before { content: '→'; color: var(--accent); font-size: 12px; }
+
+/* ── HOW IT WORKS ── */
+.hiw-section { background: var(--bg2); }
+
+.hiw-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  position: relative;
+}
+
+.hiw-steps::before {
+  content: '';
+  position: absolute;
+  top: 28px;
+  left: 12.5%;
+  right: 12.5%;
+  height: 1px;
+  background: linear-gradient(90deg, var(--accent), var(--purple));
+  opacity: 0.3;
+}
+
+.hiw-step {
+  text-align: center;
+  padding: 0 20px;
+  position: relative;
+}
+
+.hiw-num {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--purple));
+  color: #fff;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  box-shadow: 0 4px 16px rgba(79,110,247,0.3);
+  position: relative;
+  z-index: 1;
+}
+
+.hiw-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.hiw-desc { font-size: 13px; color: var(--text3); line-height: 1.5; }
+
+/* ── TESTIMONIALS ── */
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.testi-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px;
+  transition: border-color 0.2s;
+  position: relative;
+}
+
+.testi-card:hover { border-color: var(--border2); }
+
+.testi-quote {
+  font-size: 40px;
+  color: var(--accent);
+  font-family: Georgia, serif;
+  line-height: 1;
+  margin-bottom: 12px;
+  opacity: 0.4;
+}
+
+.testi-stars { color: #f59e0b; font-size: 14px; margin-bottom: 12px; letter-spacing: 2px; }
+
+.testi-text {
+  font-size: 14px;
+  color: var(--text2);
+  line-height: 1.7;
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+.testi-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.testi-avatar {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--purple));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.testi-name { font-size: 14px; font-weight: 600; color: var(--text); }
+.testi-role { font-size: 12px; color: var(--text3); }
+
+/* ── ADCRAFT PROMO ── */
+.adcraft-section { background: var(--bg2); }
+
+.adcraft-box {
+  background: linear-gradient(135deg, #0d1020, #141829);
+  border: 1px solid rgba(79,110,247,0.2);
+  border-radius: 20px;
+  padding: 48px;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.adcraft-box::before {
+  content: '';
+  position: absolute;
+  top: -80px; right: -80px;
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(79,110,247,0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.adcraft-icon-big {
+  width: 72px; height: 72px;
+  background: linear-gradient(135deg, var(--accent), var(--purple));
+  border-radius: 18px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 32px;
+  flex-shrink: 0;
+  box-shadow: 0 8px 24px rgba(79,110,247,0.3);
+}
+
+.adcraft-content { flex: 1; }
+
+.adcraft-tag {
+  display: inline-block;
+  background: rgba(34,197,94,0.1);
+  color: var(--green);
+  border: 1px solid rgba(34,197,94,0.2);
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+}
+
+.adcraft-content h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.adcraft-content p { font-size: 14px; color: var(--text2); line-height: 1.6; margin-bottom: 16px; }
+
+.adcraft-features {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.adcraft-feat {
+  font-size: 12px;
+  color: var(--text3);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.adcraft-feat::before { content: '✓'; color: var(--green); font-weight: 700; }
+
+.btn-accent {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--accent);
+  color: #fff;
+  padding: 14px 24px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  transition: all 0.2s;
+  white-space: nowrap;
+  flex-shrink: 0;
+  box-shadow: 0 4px 16px rgba(79,110,247,0.3);
+}
+
+.btn-accent:hover { background: var(--accent2); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(79,110,247,0.4); }
+
+/* ── PRICING ── */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.pricing-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 32px 28px;
+  text-align: center;
+  position: relative;
+  transition: all 0.25s;
+}
+
+.pricing-card.featured {
+  background: linear-gradient(135deg, rgba(79,110,247,0.08), rgba(124,58,237,0.08));
+  border-color: rgba(79,110,247,0.35);
+  transform: scale(1.03);
+}
+
+.pricing-card:hover { border-color: var(--border2); box-shadow: var(--shadow); }
+
+.pricing-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, var(--accent), var(--purple));
+  color: #fff;
+  padding: 4px 16px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.pricing-icon { font-size: 32px; margin-bottom: 14px; display: block; }
+
+.pricing-name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text2);
+  margin-bottom: 16px;
+}
+
+.pricing-price {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 36px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 4px;
+  line-height: 1;
+}
+
+.pricing-period {
+  font-size: 13px;
+  color: var(--text3);
+  margin-bottom: 24px;
+}
+
+.pricing-features { list-style: none; text-align: left; margin-bottom: 24px; }
+.pricing-features li {
+  font-size: 13px;
+  color: var(--text2);
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.pricing-features li:last-child { border-bottom: none; }
+.pricing-features li::before { content: '✓'; color: var(--green); font-weight: 700; flex-shrink: 0; }
+
+.pricing-note {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 20px;
+  font-size: 13px;
+  color: var(--text3);
+  text-align: center;
+}
+
+.pricing-note strong { color: var(--text2); }
+
+/* ── FAQ ── */
+.faq-section { background: var(--bg2); }
+
+.faq-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+details {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px 20px;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+details:hover { border-color: var(--border2); }
+details[open] { border-color: rgba(79,110,247,0.3); }
+
+summary {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+summary::-webkit-details-marker { display: none; }
+
+.faq-icon {
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: var(--bg4);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px;
+  color: var(--text3);
+  flex-shrink: 0;
+  transition: all 0.2s;
+}
+
+details[open] .faq-icon { background: var(--accent-glow); color: var(--accent); transform: rotate(45deg); }
+
+.faq-answer {
+  font-size: 13px;
+  color: var(--text3);
+  line-height: 1.6;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+/* ── FINAL CTA ── */
+.cta-section {
+  background: linear-gradient(135deg, #0d1020, #141829);
+  border-top: 1px solid var(--border);
+  text-align: center;
+  padding: 100px 32px;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-section::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px; height: 400px;
+  background: radial-gradient(ellipse, rgba(79,110,247,0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.cta-section h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 42px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 14px;
+  letter-spacing: -0.5px;
+  position: relative;
+}
+
+.cta-section p {
+  font-size: 17px;
+  color: var(--text2);
+  margin-bottom: 36px;
+  max-width: 460px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+  position: relative;
+}
+
+.cta-btns {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.cta-meta {
+  font-size: 13px;
+  color: var(--text3);
+  position: relative;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  padding: 48px 32px 32px;
+}
+
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 48px;
+}
+
+.footer-brand p {
+  font-size: 13px;
+  color: var(--text3);
+  line-height: 1.7;
+  margin-top: 12px;
+  max-width: 280px;
+}
+
+.footer-col h4 {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text2);
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.footer-col ul { list-style: none; }
+.footer-col ul li { margin-bottom: 8px; }
+.footer-col ul li a { font-size: 13px; color: var(--text3); transition: color 0.2s; }
+.footer-col ul li a:hover { color: var(--text); }
+
+.footer-bottom {
+  border-top: 1px solid var(--border);
+  padding-top: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.footer-bottom p { font-size: 12px; color: var(--text3); }
+.footer-bottom a { color: var(--text3); font-size: 12px; margin-left: 16px; transition: color 0.2s; }
+.footer-bottom a:hover { color: var(--text); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero-mockup { display: none; }
+  .hero h1 { font-size: 38px; }
+  .services-grid { grid-template-columns: 1fr; }
+  .hiw-steps { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+  .hiw-steps::before { display: none; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  .pricing-grid { grid-template-columns: 1fr; }
+  .pricing-card.featured { transform: none; }
+  .faq-grid { grid-template-columns: 1fr; }
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .adcraft-box { flex-direction: column; text-align: center; padding: 32px; }
+  .adcraft-features { justify-content: center; }
+}
+
+@media (max-width: 600px) {
+  nav { padding: 0 16px; }
+  .nav-links { display: none; }
+  section { padding: 56px 16px; }
+  .hero { padding: 60px 16px 48px; }
+  .hero h1 { font-size: 30px; }
+  .cta-section h2 { font-size: 28px; }
+  .section-title { font-size: 26px; }
+  .trust-bar { padding: 16px; }
+  .trust-bar-inner { gap: 16px; }
+  .footer-top { grid-template-columns: 1fr; }
+}
+</style>
 </head>
-<body class="bg-offWhite text-primary font-sans selection:bg-accent selection:text-white">
+<body>
 
-    <!-- Header -->
-    <header class="fixed top-0 w-full z-50 bg-primary/90 backdrop-blur-md border-b border-white/5 py-4 px-6 md:px-12 flex justify-between items-center transition-all duration-300">
-        <div class="flex items-center space-x-2">
-            <span class="text-2xl font-display font-bold tracking-tighter text-white">Lead<span class="text-accent">ROI</span></span>
-        </div>
-        
-        <nav class="hidden md:flex space-x-8 text-sm uppercase tracking-widest text-white/70 font-medium">
-            <a href="#about" class="hover:text-accent transition-colors">About</a>
-            <a href="#services" class="hover:text-accent transition-colors">Services</a>
-            <a href="#process" class="hover:text-accent transition-colors">Process</a>
-            <a href="#testimonials" class="hover:text-accent transition-colors">Success</a>
-        </nav>
+<!-- NAV -->
+<nav>
+  <a href="https://leadroi.in" class="nav-logo">
+    <div class="nav-logo-icon">⚡</div>
+    LeadROI
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#how-it-works">How It Works</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="https://leadroi.in/about">About</a></li>
+    <li><a href="https://leadroi.in/google-ad-preview-tool">AdCraft Tool</a></li>
+  </ul>
+  <a href="https://wa.me/918121197099?text=Hi%2C%20I%20want%20a%20free%20audit%20for%20my%20Google%20Ads%20campaigns." class="nav-cta" target="_blank">
+    💬 Get Free Audit
+  </a>
+</nav>
 
-        <a href="whatsapp://send?phone=8121197099" class="bg-accent hover:bg-accentLight text-white px-6 py-2.5 rounded-full font-display font-semibold text-sm transition-all transform hover:scale-105 active:scale-95 flex items-center gap-2 shadow-lg shadow-accent/20">
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-            WhatsApp Now
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge">📍 Performance Marketing Agency · Hyderabad</div>
+      <h1>We Don't Just<br>Run Ads. We<br><span class="highlight">Generate Revenue.</span></h1>
+      <p class="hero-sub">LeadROI specialises in Google Ads, Meta Ads and landing pages built to convert. Quality leads that close — not junk enquiries that waste your time.</p>
+      <div class="hero-btns">
+        <a href="https://wa.me/918121197099?text=Hi%2C%20I%20want%20a%20free%20audit%20for%20my%20business." class="btn-wa" target="_blank">
+          💬 Get Free Audit on WhatsApp
         </a>
-    </header>
+        <a href="https://leadroi.in/google-ad-preview-tool" class="btn-ghost">
+          ⚡ Try AdCraft Free →
+        </a>
+      </div>
+      <div class="trust-pills">
+        <span class="trust-pill">Google Ads</span>
+        <span class="trust-pill">Meta Ads</span>
+        <span class="trust-pill">Landing Pages</span>
+        <span class="trust-pill">Hyderabad Based</span>
+        <span class="trust-pill">No Contracts</span>
+        <span class="trust-pill">Free First Audit</span>
+      </div>
+    </div>
 
-    <!-- Floating WhatsApp for Mobile -->
-    <a href="whatsapp://send?phone=8121197099" class="md:hidden fixed bottom-6 right-6 z-[60] bg-accent p-4 rounded-full shadow-2xl animate-float">
-        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-    </a>
-
-    <!-- Hero Section -->
-    <section class="hero-gradient relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-        <!-- Abstract Background Elements -->
-        <div class="absolute inset-0 z-0">
-            <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-accent/10 rounded-full blur-[120px] animate-pulse"></div>
-            <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-highlight/10 rounded-full blur-[120px]"></div>
+    <!-- SERP Mockup -->
+    <div class="hero-mockup">
+      <div class="mockup-bar">
+        <div class="mockup-dots">
+          <div class="mockup-dot" style="background:#ff5f57"></div>
+          <div class="mockup-dot" style="background:#febc2e"></div>
+          <div class="mockup-dot" style="background:#28c840"></div>
         </div>
-        
-        <div class="container mx-auto px-6 relative z-10 text-center max-w-5xl">
-            <h1 class="text-white text-4xl md:text-7xl font-display font-bold mb-6 tracking-tight leading-tight animate-fade-in-up">
-                Crafting Digital <span class="text-gradient-gold italic">Legacies</span> for India's Visionaries
-            </h1>
-            <p class="text-white/80 text-lg md:text-2xl font-serif max-w-3xl mx-auto mb-12 italic leading-relaxed opacity-0 animate-fade-in-up" style="animation-delay: 0.2s">
-                Beyond Websites. Beyond Marketing. We engineer an unparalleled digital presence that converts ambition into measurable triumph.
-            </p>
-            <div class="flex flex-col md:flex-row gap-6 justify-center items-center opacity-0 animate-fade-in-up" style="animation-delay: 0.4s">
-                <a href="whatsapp://send?phone=8121197099" class="bg-accent hover:bg-accentLight text-white px-10 py-5 rounded-full font-display font-bold text-lg transition-all transform hover:scale-105 shadow-2xl shadow-accent/40 group">
-                    Start Your Journey via WhatsApp
-                    <span class="inline-block ml-2 group-hover:translate-x-1 transition-transform">→</span>
-                </a>
-            </div>
-            <div class="mt-20 opacity-40 animate-bounce">
-                <a href="#about"><svg class="w-8 h-8 mx-auto text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg></a>
-            </div>
+        <div class="mockup-search">🔍 best real estate in hyderabad</div>
+      </div>
+      <div class="mockup-body">
+        <div style="font-size:11px;color:#70757a;font-family:Arial;margin-bottom:10px">About 4,23,00,000 results</div>
+        <div class="mockup-ad">
+          <div class="mockup-sponsored">Sponsored</div>
+          <div class="mockup-url">yourcompany.com › hyderabad › properties</div>
+          <div class="mockup-title">Premium Flats in Hyderabad | Book Site Visit Today</div>
+          <div class="mockup-desc">Luxury 2 & 3 BHK apartments starting ₹45L. RERA approved. Free site visit. Limited units available — call now.</div>
+          <div class="mockup-sitelinks">
+            <div class="mockup-sitelink">View Floor Plans</div>
+            <div class="mockup-sitelink">Book Site Visit</div>
+            <div class="mockup-sitelink">EMI Calculator</div>
+            <div class="mockup-sitelink">Contact Sales</div>
+          </div>
         </div>
-    </section>
-
-    <!-- The LeadROI Advantage -->
-    <section id="about" class="py-24 md:py-32 bg-white">
-        <div class="container mx-auto px-6 max-w-7xl">
-            <div class="grid md:grid-cols-2 gap-16 items-center">
-                <div class="reveal">
-                    <span class="text-accent uppercase tracking-[0.3em] font-display text-sm font-bold block mb-4">The Advantage</span>
-                    <h2 class="text-4xl md:text-5xl font-display font-bold mb-8 leading-tight">Where Vision Meets <span class="text-accent">Exponential</span> Growth</h2>
-                    <div class="space-y-6 text-secondary text-lg leading-relaxed">
-                        <p>In a crowded digital landscape, ordinary solutions yield ordinary results. LeadROI stands apart, curating bespoke strategies and crafting digital masterpieces designed for supreme impact.</p>
-                        <p>We don't just build; we architect your online dominance, ensuring every click translates to a valuable connection, every pixel resonates with your brand's prestige.</p>
-                        <p class="font-serif italic text-xl border-l-4 border-accent pl-6">Experience the power of precision-engineered digital transformation.</p>
-                    </div>
-                </div>
-                <div class="relative reveal" style="transition-delay: 0.2s">
-                    <div class="absolute -inset-4 bg-accent/5 rounded-2xl rotate-3"></div>
-                    <div class="relative bg-secondary rounded-2xl overflow-hidden aspect-square flex items-center justify-center p-12 group">
-                        <!-- Abstract Design Component -->
-                        <div class="grid grid-cols-2 gap-4 w-full h-full opacity-40 group-hover:opacity-60 transition-opacity">
-                            <div class="bg-accent h-32 rounded-lg"></div>
-                            <div class="bg-highlight h-48 rounded-lg mt-8"></div>
-                            <div class="bg-white/20 h-40 rounded-lg"></div>
-                            <div class="bg-accent h-32 rounded-lg -mt-12"></div>
-                        </div>
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <span class="text-white text-8xl font-display font-bold opacity-10">ROI</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div style="opacity:0.3">
+          <div class="mockup-placeholder" style="width:55%"></div>
+          <div class="mockup-placeholder" style="width:80%;background:#c5d2f6;height:12px"></div>
+          <div class="mockup-placeholder" style="width:100%"></div>
+          <div class="mockup-placeholder" style="width:90%"></div>
         </div>
-    </section>
-
-    <!-- Services -->
-    <section id="services" class="py-24 md:py-32 bg-primary text-white overflow-hidden">
-        <div class="container mx-auto px-6 max-w-7xl">
-            <div class="text-center mb-20 reveal">
-                <span class="text-accent uppercase tracking-[0.3em] font-display text-sm font-bold block mb-4">Our Expertise</span>
-                <h2 class="text-4xl md:text-6xl font-display font-bold mb-6">Mastery in Digital & Design</h2>
-                <p class="text-white/60 max-w-2xl mx-auto text-lg">A harmonious blend of cutting-edge digital marketing and unparalleled website craftsmanship, tailored exclusively for discerning brands.</p>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- Elite Marketing Card -->
-                <div class="glass-card p-10 md:p-14 rounded-3xl hover:bg-white/10 transition-all duration-500 reveal group">
-                    <div class="w-16 h-16 bg-accent/20 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
-                        <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                    </div>
-                    <h3 class="text-3xl font-display font-bold mb-6 text-accent">Elite Digital Marketing</h3>
-                    <ul class="space-y-4 text-lg text-white/70 mb-10">
-                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span> Strategic SEO & Organic Growth</li>
-                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span> Performance Marketing</li>
-                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span> Content & Brand Storytelling</li>
-                    </ul>
-                    <a href="whatsapp://send?phone=8121197099" class="inline-flex items-center text-accent font-bold tracking-widest uppercase text-sm group-hover:gap-4 gap-2 transition-all">
-                        WhatsApp for Details <span>→</span>
-                    </a>
-                </div>
-
-                <!-- Premium Architecture Card -->
-                <div class="glass-card p-10 md:p-14 rounded-3xl hover:bg-white/10 transition-all duration-500 reveal group" style="transition-delay: 0.2s">
-                    <div class="w-16 h-16 bg-highlight/20 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
-                        <svg class="w-8 h-8 text-highlight" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
-                    </div>
-                    <h3 class="text-3xl font-display font-bold mb-6 text-highlight">Premium Website Architecture</h3>
-                    <ul class="space-y-4 text-lg text-white/70 mb-10">
-                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-highlight"></span> Bespoke Design & Development</li>
-                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-highlight"></span> Immersive User Experience</li>
-                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-highlight"></span> Scalable Digital Foundations</li>
-                    </ul>
-                    <a href="whatsapp://send?phone=8121197099" class="inline-flex items-center text-highlight font-bold tracking-widest uppercase text-sm group-hover:gap-4 gap-2 transition-all">
-                        Call to Learn More <span>→</span>
-                    </a>
-                </div>
-            </div>
+        <div style="opacity:0.15;margin-top:12px">
+          <div class="mockup-placeholder" style="width:45%"></div>
+          <div class="mockup-placeholder" style="width:70%;background:#c5d2f6;height:12px"></div>
+          <div class="mockup-placeholder" style="width:100%"></div>
         </div>
-    </section>
+      </div>
+      <div style="background:#f8f9fa;padding:10px 14px;border-top:1px solid #e0e0e0;display:flex;align-items:center;justify-content:space-between">
+        <span style="font-size:10px;color:#5f6368;font-family:Arial">Powered by LeadROI Google Ads</span>
+        <span style="font-size:10px;color:#22c55e;font-weight:600">● Live Campaign</span>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Signature Process -->
-    <section id="process" class="py-24 md:py-32 bg-offWhite">
-        <div class="container mx-auto px-6 max-w-7xl">
-            <div class="text-center mb-20 reveal">
-                <span class="text-accent uppercase tracking-[0.3em] font-display text-sm font-bold block mb-4">Methodology</span>
-                <h2 class="text-4xl md:text-5xl font-display font-bold mb-6">Our Signature Process</h2>
-                <p class="text-secondary/70 max-w-2xl mx-auto text-lg">Precision, Transparency, Results. A meticulously orchestrated journey to excellence.</p>
-            </div>
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-bar-inner">
+    <div class="trust-item"><span class="trust-item-icon">🎯</span> Google Ads Only Experts</div>
+    <div class="trust-item"><span class="trust-item-icon">📱</span> Meta Ads Specialists</div>
+    <div class="trust-item"><span class="trust-item-icon">🚫</span> No Junk Leads</div>
+    <div class="trust-item"><span class="trust-item-icon">📊</span> Weekly Reports</div>
+    <div class="trust-item"><span class="trust-item-icon">🛡️</span> Free First Audit</div>
+    <div class="trust-item"><span class="trust-item-icon">📍</span> Hyderabad Based</div>
+  </div>
+</div>
 
-            <div class="relative">
-                <!-- Connector Line -->
-                <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-accent/20"></div>
+<!-- PROBLEM -->
+<section class="problem-section">
+  <div class="section-inner">
+    <div class="section-tag">THE PROBLEM</div>
+    <h2 class="section-title">Tired of Ads That<br>Don't Work?</h2>
+    <p class="section-sub">Most businesses in Hyderabad face the same painful problems with their digital ads. Sound familiar?</p>
+    <div class="problem-grid">
+      <div class="problem-card">
+        <span class="problem-icon">😤</span>
+        <div class="problem-title">Spending But Not Getting Leads</div>
+        <p class="problem-desc">Budget going to Google and Meta every month but barely any enquiries to show for it.</p>
+      </div>
+      <div class="problem-card">
+        <span class="problem-icon">🗑️</span>
+        <div class="problem-title">Lots of Leads, Mostly Junk</div>
+        <p class="problem-desc">Getting 50+ leads a month but 90% are wrong numbers, random enquiries, or completely irrelevant people.</p>
+      </div>
+      <div class="problem-card">
+        <span class="problem-icon">📉</span>
+        <div class="problem-title">Agency Sends Reports, Nothing Changes</div>
+        <p class="problem-desc">Previous agency sends monthly PDFs full of impressions and clicks — but no actual business results.</p>
+      </div>
+      <div class="problem-card">
+        <span class="problem-icon">💸</span>
+        <div class="problem-title">Competitors Ranking Above You</div>
+        <p class="problem-desc">Your competitors appear first on every search while your ads barely show — or don't show at all.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-                <div class="space-y-24">
-                    <!-- Step 1 -->
-                    <div class="relative flex flex-col md:flex-row items-center reveal">
-                        <div class="md:w-1/2 md:pr-20 text-right order-2 md:order-1 mt-8 md:mt-0">
-                            <h3 class="text-2xl font-display font-bold mb-4">Discovery & Strategy</h3>
-                            <p class="text-secondary/70 text-lg">Deep dive into your brand, market, and aspirations to build a solid foundation.</p>
-                        </div>
-                        <div class="w-14 h-14 bg-white border-2 border-accent rounded-full flex items-center justify-center z-10 font-display font-bold text-accent order-1 md:order-2 shadow-xl">01</div>
-                        <div class="md:w-1/2 md:pl-20 order-3"></div>
-                    </div>
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-inner">
+    <div class="section-tag">WHAT WE DO</div>
+    <h2 class="section-title">Three Services.<br>One Goal: Your ROI.</h2>
+    <p class="section-sub">We focus on the channels that actually bring qualified leads for Indian businesses — Google, Meta, and your landing page.</p>
+    <div class="services-grid">
 
-                    <!-- Step 2 -->
-                    <div class="relative flex flex-col md:flex-row items-center reveal">
-                        <div class="md:w-1/2 md:pr-20 order-1"></div>
-                        <div class="w-14 h-14 bg-white border-2 border-accent rounded-full flex items-center justify-center z-10 font-display font-bold text-accent order-1 md:order-2 shadow-xl">02</div>
-                        <div class="md:w-1/2 md:pl-20 mt-8 md:mt-0 order-3">
-                            <h3 class="text-2xl font-display font-bold mb-4">Architect & Design</h3>
-                            <p class="text-secondary/70 text-lg">Crafting compelling narratives and visually stunning interfaces that captivate.</p>
-                        </div>
-                    </div>
+      <div class="service-card">
+        <div class="service-icon-wrap">🎯</div>
+        <div class="service-title">Google Ads Management</div>
+        <p class="service-desc">Search, Display & Performance Max campaigns targeting people who are actively looking for what you sell — highest intent, best quality leads.</p>
+        <ul class="service-features">
+          <li>Keyword research & negative keywords</li>
+          <li>RSA ad copy that converts</li>
+          <li>Bid strategy & budget optimization</li>
+          <li>Conversion tracking setup</li>
+          <li>Weekly performance reviews</li>
+        </ul>
+      </div>
 
-                    <!-- Step 3 -->
-                    <div class="relative flex flex-col md:flex-row items-center reveal">
-                        <div class="md:w-1/2 md:pr-20 text-right order-2 md:order-1 mt-8 md:mt-0">
-                            <h3 class="text-2xl font-display font-bold mb-4">Develop & Implement</h3>
-                            <p class="text-secondary/70 text-lg">Bringing strategy to life with cutting-edge technology and precision coding.</p>
-                        </div>
-                        <div class="w-14 h-14 bg-white border-2 border-accent rounded-full flex items-center justify-center z-10 font-display font-bold text-accent order-1 md:order-2 shadow-xl">03</div>
-                        <div class="md:w-1/2 md:pl-20 order-3"></div>
-                    </div>
+      <div class="service-card">
+        <div class="service-icon-wrap">📱</div>
+        <div class="service-title">Meta Ads Management</div>
+        <p class="service-desc">Facebook & Instagram campaigns that reach your ideal customer before they even start searching — perfect for awareness and retargeting.</p>
+        <ul class="service-features">
+          <li>Audience research & targeting</li>
+          <li>Ad creative direction & copy</li>
+          <li>Funnel strategy & retargeting</li>
+          <li>Lead form & landing page setup</li>
+          <li>A/B testing & optimization</li>
+        </ul>
+      </div>
 
-                    <!-- Step 4 -->
-                    <div class="relative flex flex-col md:flex-row items-center reveal">
-                        <div class="md:w-1/2 md:pr-20 order-1"></div>
-                        <div class="w-14 h-14 bg-white border-2 border-accent rounded-full flex items-center justify-center z-10 font-display font-bold text-accent order-1 md:order-2 shadow-xl">04</div>
-                        <div class="md:w-1/2 md:pl-20 mt-8 md:mt-0 order-3">
-                            <h3 class="text-2xl font-display font-bold mb-4">Optimize & Elevate</h3>
-                            <p class="text-secondary/70 text-lg">Continuous analysis and refinement for sustained, long-term digital growth.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <div class="service-card">
+        <div class="service-icon-wrap">🖥️</div>
+        <div class="service-title">Landing Page Design</div>
+        <p class="service-desc">A great ad with a bad landing page is wasted money. We design fast, mobile-first pages built specifically to convert ad traffic into leads.</p>
+        <ul class="service-features">
+          <li>Mobile-first, fast loading</li>
+          <li>Conversion-focused design</li>
+          <li>WhatsApp & form integration</li>
+          <li>A/B testing ready</li>
+          <li>Quoted separately per project</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="hiw-section" id="how-it-works">
+  <div class="section-inner">
+    <div class="section-tag">THE PROCESS</div>
+    <h2 class="section-title" style="text-align:center">How It Works</h2>
+    <p class="section-sub" style="text-align:center;margin-left:auto;margin-right:auto">From first conversation to qualified leads in your inbox — here's exactly what happens.</p>
+    <div class="hiw-steps">
+      <div class="hiw-step">
+        <div class="hiw-num">1</div>
+        <div class="hiw-title">Free Audit</div>
+        <p class="hiw-desc">We review your business, competitors & existing campaigns. No pitch — just honest findings.</p>
+      </div>
+      <div class="hiw-step">
+        <div class="hiw-num">2</div>
+        <div class="hiw-title">Strategy Call</div>
+        <p class="hiw-desc">We share our plan — keywords, audiences, targeting, expected results & budget recommendations.</p>
+      </div>
+      <div class="hiw-step">
+        <div class="hiw-num">3</div>
+        <div class="hiw-title">We Launch</div>
+        <p class="hiw-desc">Campaigns go live within 5 working days. Everything set up properly from day one.</p>
+      </div>
+      <div class="hiw-step">
+        <div class="hiw-num">4</div>
+        <div class="hiw-title">You Get Leads</div>
+        <p class="hiw-desc">Real calls, form fills & WhatsApp messages from people genuinely interested in buying.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section>
+  <div class="section-inner">
+    <div class="section-tag">CLIENT RESULTS</div>
+    <h2 class="section-title">Real Businesses.<br>Real Results.</h2>
+    <p class="section-sub">Don't take our word for it. Here's what our clients in Hyderabad say about working with LeadROI.</p>
+    <div class="testimonials-grid">
+
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">We were getting 80+ leads every month from our previous agency but closing almost nothing — most were wrong numbers, random enquiries, complete time-wasters. LeadROI completely changed our targeting and ad copy. Now we get 40+ qualified leads every month and we're closing more deals than ever before. Quality over quantity — that's the LeadROI difference.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">RK</div>
+          <div>
+            <div class="testi-name">Ramesh K.</div>
+            <div class="testi-role">Real Estate Developer · Hyderabad</div>
+          </div>
         </div>
-    </section>
+      </div>
 
-    <!-- Success Stories -->
-    <section id="testimonials" class="py-24 md:py-32 bg-secondary text-white">
-        <div class="container mx-auto px-6 max-w-7xl">
-            <div class="text-center mb-20 reveal">
-                <span class="text-accent uppercase tracking-[0.3em] font-display text-sm font-bold block mb-4">Client Success</span>
-                <h2 class="text-4xl md:text-5xl font-display font-bold mb-6">Transforming Ambition into Achievement</h2>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8 reveal">
-                <div class="bg-primary p-10 rounded-3xl border border-white/5 flex flex-col justify-between">
-                    <div>
-                        <div class="text-accent mb-6">
-                            <svg class="w-10 h-10 opacity-50" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C19.5693 16 20.017 15.5523 20.017 15V9C20.017 8.44772 19.5693 8 19.017 8H16.017C15.4647 8 15.017 8.44772 15.017 9V12C15.017 12.5523 14.5693 13 14.017 13H11.017V21H14.017ZM5.017 21L5.017 18C5.017 16.8954 5.91243 16 7.017 16H10.017C10.5693 16 11.017 15.5523 11.017 15V9C11.017 8.44772 10.5693 8 10.017 8H7.017C6.46472 8 6.017 8.44772 6.017 9V12C6.017 12.5523 5.5693 13 5.017 13H2.017V21H5.017Z"/></svg>
-                        </div>
-                        <p class="text-xl font-serif italic mb-8 leading-relaxed">"LeadROI revitalized our online presence, increasing inbound leads by 180% within six months. Their premium website design is a true masterpiece."</p>
-                    </div>
-                    <div>
-                        <hr class="border-white/10 mb-6">
-                        <p class="font-bold">CEO</p>
-                        <p class="text-white/50 text-sm">Leading Real Estate Developer</p>
-                    </div>
-                </div>
-
-                <div class="bg-primary p-10 rounded-3xl border border-white/5 flex flex-col justify-between md:translate-y-8">
-                    <div>
-                        <div class="text-accent mb-6">
-                            <svg class="w-10 h-10 opacity-50" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C19.5693 16 20.017 15.5523 20.017 15V9C20.017 8.44772 19.5693 8 19.017 8H16.017C15.4647 8 15.017 8.44772 15.017 9V12C15.017 12.5523 14.5693 13 14.017 13H11.017V21H14.017ZM5.017 21L5.017 18C5.017 16.8954 5.91243 16 7.017 16H10.017C10.5693 16 11.017 15.5523 11.017 15V9C11.017 8.44772 10.5693 8 10.017 8H7.017C6.46472 8 6.017 8.44772 6.017 9V12C6.017 12.5523 5.5693 13 5.017 13H2.017V21H5.017Z"/></svg>
-                        </div>
-                        <p class="text-xl font-serif italic mb-8 leading-relaxed">"The strategic digital marketing campaigns from LeadROI transformed our market reach. We saw a 3x improvement in conversion rates."</p>
-                    </div>
-                    <div>
-                        <hr class="border-white/10 mb-6">
-                        <p class="font-bold">Founder</p>
-                        <p class="text-white/50 text-sm">Innovative SaaS Company</p>
-                    </div>
-                </div>
-
-                <div class="bg-primary p-10 rounded-3xl border border-white/5 flex flex-col justify-between">
-                    <div>
-                        <div class="text-accent mb-6">
-                            <svg class="w-10 h-10 opacity-50" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C19.5693 16 20.017 15.5523 20.017 15V9C20.017 8.44772 19.5693 8 19.017 8H16.017C15.4647 8 15.017 8.44772 15.017 9V12C15.017 12.5523 14.5693 13 14.017 13H11.017V21H14.017ZM5.017 21L5.017 18C5.017 16.8954 5.91243 16 7.017 16H10.017C10.5693 16 11.017 15.5523 11.017 15V9C11.017 8.44772 10.5693 8 10.017 8H7.017C6.46472 8 6.017 8.44772 6.017 9V12C6.017 12.5523 5.5693 13 5.017 13H2.017V21H5.017Z"/></svg>
-                        </div>
-                        <p class="text-xl font-serif italic mb-8 leading-relaxed">"From concept to launch, LeadROI’s attention to detail and commitment to excellence were unparalleled. Our new platform consistently outperforms expectations."</p>
-                    </div>
-                    <div>
-                        <hr class="border-white/10 mb-6">
-                        <p class="font-bold">Marketing Director</p>
-                        <p class="text-white/50 text-sm">Prominent E-commerce Enterprise</p>
-                    </div>
-                </div>
-            </div>
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">Our Google Ads were running for 6 months with zero results. LeadROI restructured everything in 2 weeks. By month 2 we had more leads than we could handle. The transparency is what stands out — every Monday I get a WhatsApp update showing exactly what was spent and what we got. Best investment we made this year.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">PS</div>
+          <div>
+            <div class="testi-name">Priya S.</div>
+            <div class="testi-role">Founder · EdTech Startup · Hyderabad</div>
+          </div>
         </div>
-    </section>
+      </div>
 
-    <!-- Why Us -->
-    <section class="py-24 md:py-32 bg-white">
-        <div class="container mx-auto px-6 max-w-7xl">
-            <div class="flex flex-col md:flex-row gap-16">
-                <div class="md:w-1/3 reveal">
-                    <h2 class="text-4xl font-display font-bold mb-6">The LeadROI Difference</h2>
-                    <p class="text-secondary/70 text-lg mb-8">Choosing LeadROI means partnering with a team dedicated to your exclusive digital triumph.</p>
-                    <a href="whatsapp://send?phone=8121197099" class="text-accent font-bold underline decoration-2 underline-offset-8 hover:text-primary transition-colors">Start Your Transformation</a>
-                </div>
-                <div class="md:w-2/3 grid sm:grid-cols-2 gap-10 reveal" style="transition-delay: 0.2s">
-                    <div>
-                        <h4 class="font-display font-bold text-xl mb-3 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-accent"></span> Bespoke Strategies</h4>
-                        <p class="text-secondary/70">No cookie-cutter solutions. Every plan is handcrafted for your unique vision.</p>
-                    </div>
-                    <div>
-                        <h4 class="font-display font-bold text-xl mb-3 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-accent"></span> Unrivaled Expertise</h4>
-                        <p class="text-secondary/70">Seasoned digital architects and design visionaries at your service.</p>
-                    </div>
-                    <div>
-                        <h4 class="font-display font-bold text-xl mb-3 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-accent"></span> ROI-Driven Focus</h4>
-                        <p class="text-secondary/70">Measurable success and sustained growth through data-backed decisions.</p>
-                    </div>
-                    <div>
-                        <h4 class="font-display font-bold text-xl mb-3 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-accent"></span> Transparent Partnership</h4>
-                        <p class="text-secondary/70">Clear communication and a collaborative approach every step of the way.</p>
-                    </div>
-                </div>
-            </div>
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">I tried managing Meta Ads myself and burned ₹15,000 with nothing to show. LeadROI took over, built a proper funnel and landing page. First month we closed 3 clients worth ₹2.4 lakhs. The ROI speaks for itself. They don't just run ads — they think about your entire sales process.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">AM</div>
+          <div>
+            <div class="testi-name">Aakash M.</div>
+            <div class="testi-role">Interior Designer · Hyderabad</div>
+          </div>
         </div>
-    </section>
+      </div>
 
-    <!-- FAQ -->
-    <section class="py-24 md:py-32 bg-offWhite">
-        <div class="container mx-auto px-6 max-w-4xl">
-            <div class="text-center mb-16 reveal">
-                <h2 class="text-4xl font-display font-bold mb-4">Insights & FAQs</h2>
-                <p class="text-secondary/70">Clarity in Your Digital Journey</p>
-            </div>
-
-            <div class="space-y-4 reveal">
-                <div class="bg-white rounded-2xl border border-gray-100 overflow-hidden">
-                    <button onclick="toggleFaq(this)" class="w-full text-left p-6 md:p-8 flex justify-between items-center group">
-                        <span class="text-lg font-bold">What makes LeadROI's websites 'premium'?</span>
-                        <span class="text-accent group-hover:rotate-45 transition-transform text-2xl">+</span>
-                    </button>
-                    <div class="hidden px-8 pb-8 text-secondary/70 leading-relaxed border-t border-gray-50 pt-4">
-                        Bespoke digital assets engineered for performance, aesthetics, and conversion, featuring custom design, advanced SEO, immersive UX, and cutting-edge technology.
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-2xl border border-gray-100 overflow-hidden">
-                    <button onclick="toggleFaq(this)" class="w-full text-left p-6 md:p-8 flex justify-between items-center group">
-                        <span class="text-lg font-bold">How do you ensure ROI for marketing efforts?</span>
-                        <span class="text-accent group-hover:rotate-45 transition-transform text-2xl">+</span>
-                    </button>
-                    <div class="hidden px-8 pb-8 text-secondary/70 leading-relaxed border-t border-gray-50 pt-4">
-                        Data-driven, performance-focused strategies with clear KPIs, continuous analysis, A/B testing, and optimization at every funnel stage.
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-2xl border border-gray-100 overflow-hidden">
-                    <button onclick="toggleFaq(this)" class="w-full text-left p-6 md:p-8 flex justify-between items-center group">
-                        <span class="text-lg font-bold">Can LeadROI serve businesses outside Hyderabad?</span>
-                        <span class="text-accent group-hover:rotate-45 transition-transform text-2xl">+</span>
-                    </button>
-                    <div class="hidden px-8 pb-8 text-secondary/70 leading-relaxed border-t border-gray-50 pt-4">
-                        Absolutely. While our base is in Hyderabad, our services extend seamlessly to premium businesses across all of India and globally.
-                    </div>
-                </div>
-            </div>
-            
-            <p class="text-center mt-12 text-secondary/60 font-serif italic">Have more questions? We welcome a personal conversation.</p>
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">What I love most is the transparency. Every Monday I get a WhatsApp update — here's what we spent, here's what we got. No jargon. No hiding. Just results. Our clinic enquiries have tripled since switching to LeadROI. They understand the Hyderabad market better than any agency I've worked with.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">SR</div>
+          <div>
+            <div class="testi-name">Sunita R.</div>
+            <div class="testi-role">Clinic Owner · Hyderabad</div>
+          </div>
         </div>
-    </section>
+      </div>
 
-    <!-- Final CTA -->
-    <section class="py-24 md:py-32 relative overflow-hidden">
-        <div class="absolute inset-0 bg-primary z-0">
-            <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-accent/40 via-transparent to-transparent"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ADCRAFT PROMO -->
+<section class="adcraft-section">
+  <div class="section-inner">
+    <div class="adcraft-box">
+      <div class="adcraft-icon-big">⚡</div>
+      <div class="adcraft-content">
+        <div class="adcraft-tag">FREE TOOL BY LEADROI</div>
+        <h3>AdCraft — Free Google Ad Preview Tool</h3>
+        <p>Before you spend a single rupee on ads, see exactly how your Google Ads will look. Build RSA, PMax, Display & Call-only ads with AI-powered copy suggestions, character counters and ad strength scoring.</p>
+        <div class="adcraft-features">
+          <span class="adcraft-feat">Live SERP Preview</span>
+          <span class="adcraft-feat">AI Copy Generator</span>
+          <span class="adcraft-feat">All 4 Ad Formats</span>
+          <span class="adcraft-feat">No Signup Needed</span>
+          <span class="adcraft-feat">100% Free</span>
         </div>
-        <div class="container mx-auto px-6 relative z-10 text-center max-w-4xl reveal">
-            <h2 class="text-white text-4xl md:text-6xl font-display font-bold mb-8 leading-tight">Ready to Redefine Your Digital Horizon?</h2>
-            <p class="text-white/70 text-xl mb-12 font-serif italic">Partner with LeadROI and unlock the true potential of your brand online. Your next chapter of digital excellence awaits.</p>
-            
-            <div class="flex flex-col items-center">
-                <a href="whatsapp://send?phone=8121197099" class="bg-accent hover:bg-accentLight text-white px-12 py-6 rounded-full font-display font-bold text-xl transition-all transform hover:scale-105 shadow-[0_0_50px_rgba(184,134,11,0.3)] group mb-4">
-                    WhatsApp Us Now
-                </a>
-                <p class="text-white/40 text-sm uppercase tracking-widest mt-6">Confidential Consultations Only</p>
-            </div>
-        </div>
-    </section>
+      </div>
+      <a href="https://leadroi.in/google-ad-preview-tool" class="btn-accent">
+        Try AdCraft Free →
+      </a>
+    </div>
+  </div>
+</section>
 
-    <!-- Strategic Footer -->
-    <footer class="bg-primary py-12 px-6 border-t border-white/5">
-        <div class="container mx-auto max-w-7xl flex flex-col md:flex-row justify-between items-center gap-8">
-            <div class="text-center md:text-left">
-                <div class="text-xl font-display font-bold text-white mb-2">Lead<span class="text-accent">ROI</span></div>
-                <p class="text-white/40 text-sm uppercase tracking-widest">Engineering Digital Legacies</p>
-            </div>
-            <div class="text-center md:text-right">
-                <p class="text-white/60 text-sm mb-2">Hyderabad, India | Servicing Pan-India</p>
-                <div class="flex gap-4 text-white/30 text-xs justify-center md:justify-end">
-                    <a href="#" class="hover:text-accent transition-colors">Privacy Policy</a>
-                    <span>|</span>
-                    <a href="#" class="hover:text-accent transition-colors">Terms of Service</a>
-                </div>
-            </div>
-        </div>
-    </footer>
+<!-- PRICING -->
+<section id="pricing">
+  <div class="section-inner">
+    <div class="section-tag">PRICING</div>
+    <h2 class="section-title" style="text-align:center">Simple. Transparent.<br>No Surprises.</h2>
+    <p class="section-sub" style="text-align:center;margin-left:auto;margin-right:auto;margin-bottom:48px">One flat management fee. Your ad budget goes directly to Google or Meta — we never touch it.</p>
 
-    <script>
-        // FAQ Toggle Logic
-        function toggleFaq(button) {
-            const content = button.nextElementSibling;
-            const plus = button.querySelector('span:last-child');
-            
-            if(content.classList.contains('hidden')) {
-                content.classList.remove('hidden');
-                plus.textContent = '−';
-                plus.classList.add('rotate-180');
-            } else {
-                content.classList.add('hidden');
-                plus.textContent = '+';
-                plus.classList.remove('rotate-180');
-            }
-        }
+    <div class="pricing-grid">
 
-        // Reveal Animations on Scroll
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 150;
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
-                }
-            }
-        }
+      <div class="pricing-card">
+        <span class="pricing-icon">🎯</span>
+        <div class="pricing-name">Google Ads</div>
+        <div class="pricing-price">₹10,000</div>
+        <div class="pricing-period">per month · management fee</div>
+        <ul class="pricing-features">
+          <li>Campaign setup from scratch</li>
+          <li>Keyword research & negatives</li>
+          <li>RSA ad copy writing</li>
+          <li>Bid & budget optimization</li>
+          <li>Weekly performance report</li>
+          <li>Direct WhatsApp access</li>
+        </ul>
+        <a href="https://wa.me/918121197099?text=Hi%2C%20I%27m%20interested%20in%20Google%20Ads%20management%20at%20%E2%82%B910%2C000%2Fmonth." class="btn-wa" style="width:100%;justify-content:center" target="_blank">
+          💬 Get Started
+        </a>
+      </div>
 
-        window.addEventListener("scroll", reveal);
-        // Initial check
-        reveal();
+      <div class="pricing-card featured">
+        <div class="pricing-badge">⚡ Best Value — Save ₹2,000</div>
+        <span class="pricing-icon">🚀</span>
+        <div class="pricing-name">Google Ads + Meta Ads</div>
+        <div class="pricing-price">₹18,000</div>
+        <div class="pricing-period">per month · both platforms</div>
+        <ul class="pricing-features">
+          <li>Everything in Google Ads plan</li>
+          <li>Facebook & Instagram campaigns</li>
+          <li>Audience research & targeting</li>
+          <li>Ad creative direction</li>
+          <li>Retargeting setup</li>
+          <li>Combined weekly report</li>
+          <li>Direct WhatsApp access</li>
+        </ul>
+        <a href="https://wa.me/918121197099?text=Hi%2C%20I%27m%20interested%20in%20Google%20Ads%20%2B%20Meta%20Ads%20bundle%20at%20%E2%82%B918%2C000%2Fmonth." class="btn-wa" style="width:100%;justify-content:center" target="_blank">
+          💬 Get Started
+        </a>
+      </div>
 
-        // Header scroll effect
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 50) {
-                header.classList.add('py-2', 'bg-primary');
-                header.classList.remove('py-4', 'bg-primary/90');
-            } else {
-                header.classList.add('py-4', 'bg-primary/90');
-                header.classList.remove('py-2', 'bg-primary');
-            }
-        });
-    </script>
+      <div class="pricing-card">
+        <span class="pricing-icon">📱</span>
+        <div class="pricing-name">Meta Ads</div>
+        <div class="pricing-price">₹10,000</div>
+        <div class="pricing-period">per month · management fee</div>
+        <ul class="pricing-features">
+          <li>Facebook & Instagram setup</li>
+          <li>Audience & interest targeting</li>
+          <li>Ad copy & creative direction</li>
+          <li>Lead form optimization</li>
+          <li>Weekly performance report</li>
+          <li>Direct WhatsApp access</li>
+        </ul>
+        <a href="https://wa.me/918121197099?text=Hi%2C%20I%27m%20interested%20in%20Meta%20Ads%20management%20at%20%E2%82%B910%2C000%2Fmonth." class="btn-wa" style="width:100%;justify-content:center" target="_blank">
+          💬 Get Started
+        </a>
+      </div>
+
+    </div>
+
+    <div class="pricing-note" style="margin-top:20px">
+      <strong>Landing Page Design</strong> is quoted separately based on your requirements. 
+      All plans include a <strong>free first audit</strong> before you commit. 
+      <strong>No long-term contracts</strong> — cancel anytime.
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="section-inner">
+    <div class="section-tag">FAQ</div>
+    <h2 class="section-title">Common Questions</h2>
+    <p class="section-sub">Everything you need to know before getting started with LeadROI.</p>
+    <div class="faq-grid">
+
+      <details>
+        <summary>What is the minimum ad budget I need? <span class="faq-icon">+</span></summary>
+        <p class="faq-answer">We recommend a minimum of ₹15,000–20,000/month ad spend for Google Ads to see meaningful results. For Meta Ads, ₹10,000/month can work well for local Hyderabad businesses. Note: this is separate from our management fee.</p>
+      </details>
+
+      <details>
+        <summary>Is ₹10,000 the ad budget or your fee? <span class="faq-icon">+</span></summary>
+        <p class="faq-answer">₹10,000 is LeadROI's management fee only. Your ad budget is separate and goes directly to Google or Meta — you control it and we never touch your money.</p>
+      </details>
+
+      <details>
+        <summary>How soon will I see results? <span class="faq-icon">+</span></summary>
+        <p class="faq-answer">Google Ads typically shows results within 2–4 weeks. Meta Ads can take 4–6 weeks to optimize properly as the algorithm learns. We set realistic expectations from day one and never overpromise.</p>
+      </details>
+
+      <details>
+        <summary>What if I already have campaigns running? <span class="faq-icon">+</span></summary>
+        <p class="faq-answer">Perfect. We start with a free audit of your existing campaigns, show you exactly what's wrong and what's being wasted, and then restructure everything properly.</p>
+      </details>
+
+      <details>
+        <summary>Do you work with small businesses? <span class="faq-icon">+</span></summary>
+        <p class="faq-answer">Yes — most of our clients are small and medium businesses in Hyderabad. Whether you're a clinic, real estate developer, education institute, or any local business, we've got experience in your space.</p>
+      </details>
+
+      <details>
+        <summary>Do you guarantee results? <span class="faq-icon">+</span></summary>
+        <p class="faq-answer">No ethical agency can guarantee specific numbers — ad performance depends on your market, budget, landing page and many other factors. What we guarantee is full transparency, continuous optimization, honest reporting, and that we never run junk traffic to hit vanity metrics.</p>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="cta-section">
+  <div class="section-inner">
+    <h2>Ready to Stop Wasting<br>Your Ad Budget?</h2>
+    <p>Get a free audit — we'll show you exactly what's wrong with your current ads or why you should start running them. No pitch. No pressure. Just honest advice.</p>
+    <div class="cta-btns">
+      <a href="https://wa.me/918121197099?text=Hi%2C%20I%20want%20a%20free%20audit%20of%20my%20ads.%20My%20business%20is%3A" class="btn-wa" target="_blank" style="font-size:16px;padding:16px 28px">
+        💬 Chat on WhatsApp Now
+      </a>
+    </div>
+    <p class="cta-meta">+91 81211 97099 · Hyderabad · Typically replies within 1 hour</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="https://leadroi.in" class="nav-logo" style="display:inline-flex;margin-bottom:4px">
+          <div class="nav-logo-icon">⚡</div>
+          LeadROI
+        </a>
+        <p>Performance marketing agency in Hyderabad specialising in Google Ads, Meta Ads and conversion-focused landing pages. We bring quality leads — not junk traffic.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Google Ads Management</a></li>
+          <li><a href="#services">Meta Ads Management</a></li>
+          <li><a href="#services">Landing Page Design</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="https://leadroi.in/about">About LeadROI</a></li>
+          <li><a href="#how-it-works">How It Works</a></li>
+          <li><a href="https://leadroi.in/privacy-policy">Privacy Policy</a></li>
+          <li><a href="https://wa.me/918121197099">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Free Tools</h4>
+        <ul>
+          <li><a href="https://leadroi.in/google-ad-preview-tool">AdCraft — Ad Preview Tool</a></li>
+          <li><a href="https://leadroi.in/google-ad-preview-tool">Google Ad Generator</a></li>
+          <li><a href="https://leadroi.in/google-ad-preview-tool">RSA Preview Tool</a></li>
+          <li><a href="https://leadroi.in/google-ad-preview-tool">Ad Copy Generator</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 LeadROI · Performance Marketing Agency · Hyderabad, Telangana, India</p>
+      <div>
+        <a href="https://leadroi.in/about">About</a>
+        <a href="https://leadroi.in/privacy-policy">Privacy Policy</a>
+        <a href="https://wa.me/918121197099">WhatsApp</a>
+        <a href="https://leadroi.in/google-ad-preview-tool">AdCraft Tool</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
 </body>
 </html>
