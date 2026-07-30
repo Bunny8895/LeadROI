@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Choose Your Website Style — LeadROI</title>
+<meta name="description" content="Choose the design language for your new website. Glassmorphism, Bento, Aurora, Minimalism, Material, Dark Mode, Neumorphism — pick a style, we'll build the rest around your brand.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ============ SITE NAV ============ -->
+<header class="site-nav" id="siteNav">
+  <div class="nav-inner">
+    <a href="#top" class="brand">
+      <span class="brand-mark">Lead<span class="brand-accent">ROI</span></span>
+    </a>
+    <nav class="nav-links">
+      <a href="#styles">Styles</a>
+      <a href="#preview">Live Preview</a>
+      <a href="#cta">Get Started</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <p class="eyebrow reveal">A LeadROI Website Experience</p>
+    <h1 class="hero-title reveal">
+      Choose Your<br>
+      <span class="hero-title-gradient">Website Style</span>
+    </h1>
+    <p class="hero-subtitle reveal">
+      Every website is fully customized for your business.
+      Choose the design style you love the most — we'll personalize it
+      with your logo, services, branding, and business information.
+    </p>
+    <div class="hero-actions reveal">
+      <a href="#styles" class="btn btn-primary btn-lg">
+        <span>Browse Website Styles</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="#preview" class="btn btn-ghost btn-lg">See Live Preview</a>
+    </div>
+    <div class="hero-strip reveal">
+      <span>7 design languages</span>
+      <span class="dot">•</span>
+      <span>One live preview</span>
+      <span class="dot">•</span>
+      <span>Ready in 24 hours</span>
+    </div>
+  </div>
+  <div class="scroll-cue" aria-hidden="true"><span></span></div>
+</section>
+
+<!-- ============ STYLE SELECTOR ============ -->
+<section class="picker-section" id="styles">
+  <div class="section-head">
+    <p class="eyebrow reveal">Pick a direction — watch it update live, on the right</p>
+    <h2 class="section-title reveal">Seven design languages. One website.</h2>
+    <p class="section-sub reveal">Click a style on the left and the live preview transforms instantly on the right. Content never changes — only the design does.</p>
+  </div>
+
+  <!-- ============ SELECTED STYLE BANNER ============ -->
+  <div class="selection-banner" id="selectionBanner">
+    <div class="selection-banner-inner">
+      <span class="selection-check">✅</span>
+      <p>You selected <strong id="selectedStyleName">Glassmorphism</strong></p>
+      <button class="selection-close" id="selectionClose" aria-label="Dismiss">✕</button>
+    </div>
+  </div>
+
+  <div class="split-layout">
+
+    <!-- ============ LEFT: STYLE LIST ============ -->
+    <div class="style-list-col reveal" id="styleGrid">
+
+      <article class="style-card selected" data-theme="glass" tabindex="0">
+        <div class="style-thumb thumb-glass" aria-hidden="true">
+          <div class="thumb-shape s1"></div>
+          <div class="thumb-shape s2"></div>
+          <div class="thumb-shape s3"></div>
+        </div>
+        <div class="style-body">
+          <div class="style-heading">
+            <h3>Glassmorphism</h3>
+            <span class="style-check" aria-hidden="true">✓</span>
+          </div>
+          <p>Frosted glass, soft blur, and floating translucent cards over rich gradients.</p>
+          <div class="style-actions">
+            <button class="btn btn-sm btn-solid" data-action="choose" data-theme="glass">Choose Style</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="style-card" data-theme="bento" tabindex="0">
+        <div class="style-thumb thumb-bento" aria-hidden="true">
+          <div class="b b1"></div><div class="b b2"></div><div class="b b3"></div><div class="b b4"></div>
+        </div>
+        <div class="style-body">
+          <div class="style-heading">
+            <h3>Bento UI</h3>
+            <span class="style-check" aria-hidden="true">✓</span>
+          </div>
+          <p>Apple-inspired grid layout with bold cards, generous spacing, and a dashboard feel.</p>
+          <div class="style-actions">
+            <button class="btn btn-sm btn-solid" data-action="choose" data-theme="bento">Choose Style</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="style-card" data-theme="aurora" tabindex="0">
+        <div class="style-thumb thumb-aurora" aria-hidden="true">
+          <div class="aurora-blob a1"></div><div class="aurora-blob a2"></div><div class="aurora-blob a3"></div>
+        </div>
+        <div class="style-body">
+          <div class="style-heading">
+            <h3>Aurora UI</h3>
+            <span class="style-check" aria-hidden="true">✓</span>
+          </div>
+          <p>Animated glowing gradients on deep space backgrounds. Luxury, cinematic, premium.</p>
+          <div class="style-actions">
+            <button class="btn btn-sm btn-solid" data-action="choose" data-theme="aurora">Choose Style</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="style-card" data-theme="minimal" tabindex="0">
+        <div class="style-thumb thumb-minimal" aria-hidden="true">
+          <div class="m-line"></div><div class="m-line short"></div><div class="m-dot"></div>
+        </div>
+        <div class="style-body">
+          <div class="style-heading">
+            <h3>Minimalism</h3>
+            <span class="style-check" aria-hidden="true">✓</span>
+          </div>
+          <p>Vast white space, quiet typography, and an elegant, uncluttered layout.</p>
+          <div class="style-actions">
+            <button class="btn btn-sm btn-solid" data-action="choose" data-theme="minimal">Choose Style</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="style-card" data-theme="material" tabindex="0">
+        <div class="style-thumb thumb-material" aria-hidden="true">
+          <div class="mt-card mc1"></div><div class="mt-card mc2"></div><div class="mt-fab"></div>
+        </div>
+        <div class="style-body">
+          <div class="style-heading">
+            <h3>Material Design</h3>
+            <span class="style-check" aria-hidden="true">✓</span>
+          </div>
+          <p>Google Material You inspired — rounded cards, tactile buttons, friendly and clear.</p>
+          <div class="style-actions">
+            <button class="btn btn-sm btn-solid" data-action="choose" data-theme="material">Choose Style</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="style-card" data-theme="dark" tabindex="0">
+        <div class="style-thumb thumb-dark" aria-hidden="true">
+          <div class="dk-grid"></div><div class="dk-glow"></div>
+        </div>
+        <div class="style-body">
+          <div class="style-heading">
+            <h3>Dark Mode</h3>
+            <span class="style-check" aria-hidden="true">✓</span>
+          </div>
+          <p>A confident dark interface with neon accents. Modern, technical, high contrast.</p>
+          <div class="style-actions">
+            <button class="btn btn-sm btn-solid" data-action="choose" data-theme="dark">Choose Style</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="style-card" data-theme="neumorphism" tabindex="0">
+        <div class="style-thumb thumb-neu" aria-hidden="true">
+          <div class="nu-circle"></div><div class="nu-bar"></div>
+        </div>
+        <div class="style-body">
+          <div class="style-heading">
+            <h3>Neumorphism</h3>
+            <span class="style-check" aria-hidden="true">✓</span>
+          </div>
+          <p>Soft extruded surfaces and gentle dual shadows. Tactile, calm, monochrome.</p>
+          <div class="style-actions">
+            <button class="btn btn-sm btn-solid" data-action="choose" data-theme="neumorphism">Choose Style</button>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- ============ RIGHT: STICKY LIVE PREVIEW ============ -->
+    <div class="preview-col reveal" id="preview">
+      <div class="preview-toolbar">
+        <div class="toolbar-pills" id="toolbarPills">
+          <button class="pill active" data-theme="glass">Glass</button>
+          <button class="pill" data-theme="bento">Bento</button>
+          <button class="pill" data-theme="aurora">Aurora</button>
+          <button class="pill" data-theme="minimal">Minimal</button>
+          <button class="pill" data-theme="material">Material</button>
+          <button class="pill" data-theme="dark">Dark</button>
+          <button class="pill" data-theme="neumorphism">Neumorphism</button>
+        </div>
+        <div class="toolbar-current">
+          Viewing: <strong id="currentThemeLabel">Glassmorphism</strong>
+        </div>
+      </div>
+
+      <div class="preview-frame">
+        <div class="preview-browser-bar">
+          <span class="pb-dot red"></span><span class="pb-dot yellow"></span><span class="pb-dot green"></span>
+          <span class="pb-url">yourbusiness.com</span>
+        </div>
+
+        <div class="preview-panel" id="previewPanel" data-theme="glass">
+
+      <!-- Preview Nav -->
+      <nav class="pv-nav">
+        <div class="pv-logo"><span class="pv-logo-mark">YB</span> Your Business</div>
+        <div class="pv-nav-links">
+          <a href="#pv-about">About</a>
+          <a href="#pv-services">Services</a>
+          <a href="#pv-gallery">Gallery</a>
+          <a href="#pv-testimonials">Reviews</a>
+          <a href="#pv-contact">Contact</a>
+        </div>
+        <a href="#pv-contact" class="pv-nav-cta">Get a Quote</a>
+      </nav>
+
+      <!-- Preview Hero -->
+      <section class="pv-hero">
+        <p class="pv-eyebrow">Trusted by businesses like yours</p>
+        <h1 class="pv-hero-title">Professional Service Provider</h1>
+        <p class="pv-hero-sub">Helping businesses grow with professional solutions — tailored strategy, dependable delivery, and results you can measure.</p>
+        <div class="pv-hero-actions">
+          <a href="#pv-contact" class="pv-btn pv-btn-primary">Book a Consultation</a>
+          <a href="#pv-services" class="pv-btn pv-btn-secondary">Our Services</a>
+        </div>
+      </section>
+
+      <!-- About -->
+      <section class="pv-section" id="pv-about">
+        <div class="pv-section-head">
+          <p class="pv-tag">About Us</p>
+          <h2>Built on experience, driven by results</h2>
+          <p class="pv-section-desc">We combine deep industry knowledge with a hands-on approach, so every client gets a solution built around their goals — not a one-size-fits-all package.</p>
+        </div>
+      </section>
+
+      <!-- Services -->
+      <section class="pv-section" id="pv-services">
+        <div class="pv-section-head">
+          <p class="pv-tag">What We Offer</p>
+          <h2>Our Services</h2>
+        </div>
+        <div class="pv-services-grid">
+          <div class="pv-card pv-service">
+            <div class="pv-icon">◆</div>
+            <h3>Service One</h3>
+            <p>A complete, end-to-end solution designed around your specific requirements and timeline.</p>
+          </div>
+          <div class="pv-card pv-service">
+            <div class="pv-icon">◆</div>
+            <h3>Service Two</h3>
+            <p>Ongoing support and optimisation to keep results improving long after day one.</p>
+          </div>
+          <div class="pv-card pv-service">
+            <div class="pv-icon">◆</div>
+            <h3>Service Three</h3>
+            <p>Clear reporting and transparent communication at every stage of the process.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Why Choose Us -->
+      <section class="pv-section" id="pv-why">
+        <div class="pv-section-head">
+          <p class="pv-tag">Why Choose Us</p>
+          <h2>What sets us apart</h2>
+        </div>
+        <div class="pv-why-grid">
+          <div class="pv-card pv-why-item">
+            <div class="pv-icon">✓</div>
+            <h4>Professional Team</h4>
+            <p>Experienced specialists dedicated to your project.</p>
+          </div>
+          <div class="pv-card pv-why-item">
+            <div class="pv-icon">✓</div>
+            <h4>Proven Process</h4>
+            <p>A clear, tested approach from first call to final delivery.</p>
+          </div>
+          <div class="pv-card pv-why-item">
+            <div class="pv-icon">✓</div>
+            <h4>Honest Pricing</h4>
+            <p>No hidden costs — you know exactly what you're paying for.</p>
+          </div>
+          <div class="pv-card pv-why-item">
+            <div class="pv-icon">✓</div>
+            <h4>Ongoing Support</h4>
+            <p>We stay involved long after the project goes live.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Stats -->
+      <section class="pv-stats">
+        <div class="pv-stat"><span class="pv-stat-num" data-count="150">0</span><span class="pv-stat-label">Professional Team</span></div>
+        <div class="pv-stat"><span class="pv-stat-num" data-count="500">0</span><span class="pv-stat-label">Satisfied Customers</span></div>
+        <div class="pv-stat"><span class="pv-stat-num" data-count="12">0</span><span class="pv-stat-label">Years of Experience</span></div>
+      </section>
+
+      <!-- Gallery -->
+      <section class="pv-section" id="pv-gallery">
+        <div class="pv-section-head">
+          <p class="pv-tag">Our Work</p>
+          <h2>Gallery</h2>
+        </div>
+        <div class="pv-gallery-grid">
+          <div class="pv-gallery-item g1"></div>
+          <div class="pv-gallery-item g2"></div>
+          <div class="pv-gallery-item g3"></div>
+          <div class="pv-gallery-item g4"></div>
+          <div class="pv-gallery-item g5"></div>
+          <div class="pv-gallery-item g6"></div>
+        </div>
+      </section>
+
+      <!-- Testimonials -->
+      <section class="pv-section" id="pv-testimonials">
+        <div class="pv-section-head">
+          <p class="pv-tag">Testimonials</p>
+          <h2>What our clients say</h2>
+        </div>
+        <div class="pv-testimonial-grid">
+          <div class="pv-card pv-testimonial">
+            <p>"They understood exactly what we needed and delivered ahead of schedule. Communication was excellent throughout."</p>
+            <div class="pv-testimonial-author"><span class="pv-avatar">A</span> Aisha K. — Business Owner</div>
+          </div>
+          <div class="pv-card pv-testimonial">
+            <p>"Professional from the first call to final delivery. The results speak for themselves."</p>
+            <div class="pv-testimonial-author"><span class="pv-avatar">R</span> Rahul M. — Director</div>
+          </div>
+          <div class="pv-card pv-testimonial">
+            <p>"A genuinely reliable team. We've already recommended them to two other businesses."</p>
+            <div class="pv-testimonial-author"><span class="pv-avatar">S</span> Sara T. — Founder</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="pv-section" id="pv-faq">
+        <div class="pv-section-head">
+          <p class="pv-tag">FAQ</p>
+          <h2>Common questions</h2>
+        </div>
+        <div class="pv-faq-list">
+          <details class="pv-faq-item" open>
+            <summary>How long does a typical project take?</summary>
+            <p>Most projects are scoped, delivered, and reviewed within a few weeks, depending on complexity.</p>
+          </details>
+          <details class="pv-faq-item">
+            <summary>Do you offer ongoing support?</summary>
+            <p>Yes — every engagement includes a support period, with optional extended plans afterward.</p>
+          </details>
+          <details class="pv-faq-item">
+            <summary>Can I request changes after delivery?</summary>
+            <p>Absolutely. We build in review rounds so the final result matches your expectations.</p>
+          </details>
+          <details class="pv-faq-item">
+            <summary>How do we get started?</summary>
+            <p>Book a free consultation using the contact form below and we'll take it from there.</p>
+          </details>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section class="pv-section pv-contact-section" id="pv-contact">
+        <div class="pv-section-head">
+          <p class="pv-tag">Get In Touch</p>
+          <h2>Let's start a conversation</h2>
+        </div>
+        <div class="pv-contact-grid">
+          <form class="pv-card pv-form" onsubmit="return false;">
+            <label>Full Name<input type="text" placeholder="Jordan Smith"></label>
+            <label>Email Address<input type="email" placeholder="jordan@email.com"></label>
+            <label>Message<textarea rows="3" placeholder="Tell us about your project..."></textarea></label>
+            <button type="submit" class="pv-btn pv-btn-primary pv-form-submit">Send Message</button>
+          </form>
+          <div class="pv-map-card">
+            <div class="pv-map-placeholder">
+              <span>📍 Map Location Preview</span>
+            </div>
+            <div class="pv-contact-details">
+              <p>📍 123 Business Avenue, Your City</p>
+              <p>📞 +1 (555) 010-2030</p>
+              <p>✉️ hello@yourbusiness.com</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Floating action buttons -->
+      <a href="#" class="pv-fab pv-fab-whatsapp" aria-label="WhatsApp">💬</a>
+      <a href="#" class="pv-fab pv-fab-call" aria-label="Call">📞</a>
+
+      <!-- Preview Footer -->
+      <footer class="pv-footer">
+        <div class="pv-footer-brand"><span class="pv-logo-mark">YB</span> Your Business</div>
+        <p>© 2026 Your Business. All rights reserved.</p>
+      </footer>
+
+    </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BOTTOM CTA ============ -->
+<section class="final-cta" id="cta">
+  <div class="final-glow" aria-hidden="true"></div>
+  <div class="final-inner">
+    <h2 class="reveal">Ready to Build Your Website?</h2>
+    <p class="reveal">We'll customize this exact design style with your business name, services, branding, photos, and contact details. Your first website preview will be ready within 24 hours after domain booking and advance payment.</p>
+    <a href="#top" class="btn btn-primary btn-lg reveal" id="finalCtaBtn">
+      <span>Let's Get Started</span>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="brand"><span class="brand-mark">Lead<span class="brand-accent">ROI</span></span></div>
+    <p>Premium Business Websites</p>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
