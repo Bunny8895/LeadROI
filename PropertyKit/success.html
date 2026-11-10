@@ -11,9 +11,7 @@
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
 fbq('init','1544394453870934');
-fbq('track','PageView');
 </script>
-<noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=1544394453870934&ev=PageView&noscript=1"/></noscript>
 <!-- End Meta Pixel -->
 <style>
 :root{
@@ -159,25 +157,27 @@ h1{font-size:clamp(28px,7vw,34px);line-height:1.15;font-weight:800;letter-spacin
 
 <script>
 
-/* Meta Pixel: Purchase (fires once per payment) */
+/* Meta Pixel: Purchase (the only event on this page; fires once per payment) */
 (function () {
-  var PURCHASE_VALUE = 487;          /* fallback amount in INR; overridden by ?value= or ?amount= in the URL if present */
+  var PURCHASE_VALUE = 487;          /* fallback amount in INR; overridden by ?value= or ?amount= if present */
   var CURRENCY = 'INR';
-  var REQUIRE_PAYMENT_ID = true;     /* true = only count visits that come back from Razorpay with a payment id */
   try {
     var q = new URLSearchParams(location.search);
     var payId = q.get('razorpay_payment_id') || q.get('payment_id') || '';
-    if (REQUIRE_PAYMENT_ID && !payId) return;
     var value = parseFloat(q.get('value') || q.get('amount'));
     if (!(value > 0)) value = PURCHASE_VALUE;
-    var key = 'pk_purchase_' + (payId || 'anon'), now = Date.now(), last = 0;
-    try { last = +localStorage.getItem(key) || 0; } catch (e) {}
-    /* with a payment id: once ever; without one: once per 24h */
-    if (last && (payId || now - last < 864e5)) return;
-    if (typeof window.fbq !== 'function') return;
-    var opts = payId ? { eventID: payId } : { eventID: 'purchase_' + now.toString(36) };
-    fbq('track', 'Purchase', { value: value, currency: CURRENCY, content_name: 'PropertyKit Lifetime Access', content_type: 'product' }, opts);
-    try { localStorage.setItem(key, String(now)); } catch (e) {}
+    /* with a payment id: once ever (localStorage); without one: once per tab session, so a refresh does not repeat it */
+    var store = payId ? window.localStorage : window.sessionStorage, key = 'pk_purchase_' + (payId || 'session');
+    try { if (store.getItem(key)) return; } catch (e) {}
+    var opts = { eventID: payId || ('purchase_' + Date.now().toString(36)) };
+    var sent = false;
+    function send() {
+      if (sent || typeof window.fbq !== 'function') return;
+      sent = true;
+      fbq('track', 'Purchase', { value: value, currency: CURRENCY, content_name: 'PropertyKit Lifetime Access', content_type: 'product' }, opts);
+      try { store.setItem(key, String(Date.now())); } catch (e) {}
+    }
+    send();
   } catch (e) {}
 })();
 
