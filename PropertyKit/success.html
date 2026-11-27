@@ -159,16 +159,21 @@ h1{font-size:clamp(28px,7vw,34px);line-height:1.15;font-weight:800;letter-spacin
 
 /* Meta Pixel: Purchase (the only event on this page; fires once per payment) */
 (function () {
-  var PURCHASE_VALUE = 487;          /* fallback amount in INR; overridden by ?value= or ?amount= if present */
+  var PURCHASE_VALUE = 149;          /* plain /success = the live 149 button */
+  var PRICES = [149, 287, 487, 987];
   var CURRENCY = 'INR';
   try {
     var q = new URLSearchParams(location.search);
     var payId = q.get('razorpay_payment_id') || q.get('payment_id') || '';
-    var value = parseFloat(q.get('value') || q.get('amount'));
-    if (!(value > 0)) value = PURCHASE_VALUE;
-    /* with a payment id: once ever (localStorage); without one: once per tab session, so a refresh does not repeat it */
-    var store = payId ? window.localStorage : window.sessionStorage, key = 'pk_purchase_' + (payId || 'session');
-    try { if (store.getItem(key)) return; } catch (e) {}
+    var value = Number(q.get('p') || q.get('value') || q.get('amount'));
+    if (PRICES.indexOf(value) < 0) value = PURCHASE_VALUE;
+    /* with a payment id: once ever; without one: once per price per browser in 24 hours (covers refresh and new tabs) */
+    var store, key = 'pk_purchase_' + (payId || value);
+    try {
+      store = window.localStorage;
+      var last = Number(store.getItem(key));
+      if (last && (payId || Date.now() - last < 864e5)) return;
+    } catch (e) {}
     var opts = { eventID: payId || ('purchase_' + Date.now().toString(36)) };
     var sent = false;
     function send() {
